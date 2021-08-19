@@ -1,0 +1,16 @@
+.naruto-notch{
+    margin-left: 80px !important;
+}
+
+.naruto-notch::before{
+    content: "";
+    position: absolute;
+    background-image: url("../img/characters/naruto-1.png");
+    height: 100px;
+    width: 120px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    top: -40px;
+    left: -90px;
+    z-index: 1;
+}
