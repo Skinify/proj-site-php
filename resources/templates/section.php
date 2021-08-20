@@ -5,7 +5,7 @@
     <div class="section-body">
         <?php for($i = 1; $i <= 12; $i++){
             echo '
-                <a class="manga" href="readmanga.html">
+                <a class="manga" href="read-manga.php">
                     <img src="./img/mangas-thumb/naruto-manga-thumb.jpg">
                     <p>Naruto</p>
                 </a>

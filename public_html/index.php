@@ -1,6 +1,4 @@
-<?php
- include("../resources/templates/base.php");
-?>
+<?php include "../resources/templates/base.php"; ?>
 <html lang="pt-br">
     <?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => 'Mange online'));?>
     <body>

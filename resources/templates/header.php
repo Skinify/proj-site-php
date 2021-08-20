@@ -1,7 +1,7 @@
 <nav id="header" class="header-on-top">
     <a id="header-title" href="index.php">Manga Online</a>
     <ul>
-        <li>Mais lidos</li>
+        <li><a href="most-read.php">Mais lidos</a></li>
         <li>Leitura aleatoria</li>
         <li id="category">Categorias ▼
             <div id="category-dropbox">

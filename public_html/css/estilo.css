@@ -81,6 +81,14 @@
     background-color: #e28c30;
 }
 
+#header > ul > li > a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
 #splash-screen{
     position: relative;
     height: 600px;
@@ -335,14 +343,21 @@
 }
 
 #category-dropbox > ul > li{
-    padding: 12px 20px;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
+    position:relative;
+    display: flex;
 }
 
 #category-dropbox > ul > li:hover{
     background-color: #e28c30 !important;
+}
+
+#category-dropbox > ul > li > a{
+    height: 100%;
+    width: 100%;
+    padding: 12px 20px;
 }
 
 .body-overflow-hidden{
@@ -460,7 +475,7 @@
     align-self: center;
     margin-top: 100px;
     margin-bottom: 60px;
-    background-image: url("../img/mangas-pages/1.webp");
+    /*background-image: url("../img/mangas-pages/anime-1/cap-1/1.webp") url("../img/mangas-pages/1.webp");*/
 }
 
 .full-splash{
