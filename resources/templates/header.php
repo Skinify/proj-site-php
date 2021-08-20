@@ -6,10 +6,9 @@
         <li id="category">Categorias ▼
             <div id="category-dropbox">
                 <ul>
-                    <li>Terror</li>
-                    <li>asdasdasdasd</li>
-                    <li>Terror</li>
-                    <li>Terror</li>
+                <?php for($i = 1; $i <= 4; $i++){ 
+                    echo '<li><a href="categories.php?category=\'Terror\'">Terror</a></li>';
+                } ?>
                 </ul>
             </div>
         </li>
