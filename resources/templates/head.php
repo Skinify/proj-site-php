@@ -5,5 +5,7 @@
     <link rel="stylesheet" href="./css/comum.css" type="text/css">
     <link rel="stylesheet" href="./css/estilo.css" type="text/css">
     <link rel="stylesheet" href="./css/notchs.css" type="text/css">
+    <link rel="stylesheet" href="./css/alert.css" type="text/css">
+    <script src="./js/alert.js"></script>
     <title><?php echo $pageTitle ?></title>
 </head>

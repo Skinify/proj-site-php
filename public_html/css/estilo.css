@@ -407,18 +407,18 @@
     min-width:300px;
 }
 
-#modal > header{
+#modal > form > header{
     text-align: center;
     font-size: 24px
 }
 
 
-#modal > div{
+#modal > form{
     display: flex;
     flex-direction: column;
 }
 
-#modal > div > input[type='text']{
+#modal > form > input{
     padding: 12px;
     background-color: #dcdbdb3d;
     border: 1px solid #efefef;    
@@ -426,7 +426,7 @@
     margin-bottom: 12px;
 }
 
-#modal > div > input[type='text']:first-of-type{
+#modal > form > input:first-of-type{
     padding: 12px;
     margin-top:24px;
     background-color: #dcdbdb3d;
@@ -434,12 +434,12 @@
     border-radius: 4px;
 }
 
-#modal > div > input[type='text']:last-of-type{
+#modal > form > input:last-of-type{
     margin-bottom: 24px;
     margin-top:0px;
 }
 
-#modal > div > button{
+#modal > form > button{
     padding: 12px;
     margin: 12px 0;
     border: none;
@@ -450,11 +450,11 @@
     transition: all .2s ease;
 }
 
-#modal > div > button:hover{
+#modal > form > button:hover{
     background-color: #e28c30;
 }
 
-#modal > div > small{
+#modal > form > small{
     color:#0645AD;
     cursor: pointer;
     margin-top: -20px;
@@ -463,7 +463,7 @@
 }
 
 .element-hide{
-    display: none;
+    display: none !important;
 }
 
 

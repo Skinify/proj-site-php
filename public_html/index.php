@@ -1,10 +1,4 @@
 <?php include "../resources/templates/base.php"; ?>
-<?php include "../resources/config.php"; ?>
-<?php include "../resources/models/User.php"; ?>
-<?php 
-    $r = executeQuerySingle("SELECT * FROM User");
-    echo $r["Id"];
-?>
 <html lang="pt-br">
     <?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => 'Mange online'));?>
     <body>
@@ -27,8 +21,5 @@
                 ));
             ?>
         </div>
-        <?php
-            include("../resources/templates/login-modal.php");
-        ?>
     </body>
 </html>

@@ -1,0 +1,72 @@
+  .alert{
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    width: 100%;
+    min-height: 100px;
+    animation: alert-in-out 8s forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .alert > div{
+    background-color: #f19a3e;
+    color:#FFF;
+    box-shadow: 0px 0px 8px 1px #f19a3e;
+    width: 90%;
+    height: 100%;
+    margin:12px 80px;
+    padding:12px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    animation: pulsing-shadow 2s forwards;
+    animation-iteration-count: infinite;
+    line-break:normal;
+  }
+
+  @keyframes pulsing-shadow {
+    0%{
+      box-shadow: 0px 0px 4px 2px #f19a3e;
+    }
+    50%{
+      box-shadow: 0px 0px 16px 3px #f19a3e;
+    }
+    100%{
+      box-shadow: 0px 0px 4px 2px #f19a3e;
+    }
+  }
+
+  @keyframes alert-in-out {
+    0%{
+     bottom: -200px;
+    }
+    1%{
+      bottom: -199px;
+    }
+
+    10%{
+      bottom: 20px;
+    }
+
+    50%{
+      bottom: 20px;
+
+    }
+
+    90%{
+      bottom: 20px;
+    }
+
+    99%{
+      bottom: -199px;
+    }
+
+    100%{
+      bottom: -200px;
+    }
+  }
+  
