@@ -17,8 +17,5 @@
                 ));
             ?>
         </div>
-        <?php
-            include("../resources/templates/login-modal.php");
-        ?>
     </body>
 </html>

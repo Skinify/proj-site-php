@@ -1,3 +1,17 @@
+<?php
+
+    session_start();
+
+    $logado = false;
+
+    if(isset($_SESSION["loged"])){
+        $logado = $_SESSION["loged"];
+        $user = $_SESSION["user"];
+    }
+
+
+?>
+
 <nav id="header" class="header-on-top">
     <a id="header-title" href="index.php">Manga Online</a>
     <ul>
@@ -16,9 +30,26 @@
             <button id="search-btn" onclick="toggleSearch()"></button>
             <input type="text" class="search-input" placeholder="Naruto" />
         </li>
-        <li id="login-btn" onclick="openLogin()">
-            
-        </li>
+        <?php
+            if($logado == true){
+                echo "      
+                <li id='logged'>
+                    Bem vindo {$user}
+                    <div id='logged-dropbox'>
+                        <ul>
+                            <li><a>Minha conta</a></li>
+                            <li><a>Favoritos</a></li>
+                            <li><a href='actions/logout.php'>Sair</a></li>
+                        </ul>
+                    </div>
+                </li>";
+            }else{
+                echo '        
+                <li id="login-btn" onclick="openLogin()">
+                    
+                </li>';
+            }
+        ?>
     </ul>
 </nav>
 <div id="login-modal" class="hide-modal" tabindex="0">
@@ -28,7 +59,7 @@
             <header>
                 Login
             </header>
-            <input type="text" name="email" placeholder="JoooaoXD@hotmail.com" />
+            <input type="text" name="nickname" placeholder="JoooaoXD" />
             <input type="password" name="password" placeholder="********" />
             <small href="#" id="small-criar-conta" onclick="toggleCriarContaInputs()">Ainda não possui conta ? Crie
                 uma agora</small>

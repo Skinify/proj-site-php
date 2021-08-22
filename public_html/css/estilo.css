@@ -359,6 +359,41 @@
     padding: 12px 20px;
 }
 
+#logged{
+    position: relative;
+}
+
+#logged:hover > #logged-dropbox{
+    display: inherit !important;
+}
+
+#logged-dropbox{
+    display: none;
+    position: absolute;
+    background-color: #F19A3E !important;
+    color:#FFF;
+    top: 100%;
+}
+
+#logged-dropbox > ul > li{
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    position:relative;
+    display: flex;
+}
+
+#logged-dropbox > ul > li:hover{
+    background-color: #e28c30 !important;
+}
+
+#logged-dropbox > ul > li > a{
+    height: 100%;
+    width: 100%;
+    padding: 12px 20px;
+}
+
+
 .body-overflow-hidden{
     overflow: hidden;
 }

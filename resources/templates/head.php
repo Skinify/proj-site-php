@@ -10,7 +10,7 @@
     <title><?php echo $pageTitle ?></title>
 
     <script>
-        if(alertMessage){
+        if(typeof alertMessage !== 'undefined'){
             popAlert(alertMessage);
         }
     </script>

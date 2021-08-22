@@ -1,6 +1,7 @@
 <?php
-
+try{
     if ( isset( $_POST['submit'] ) ) {
+        
         include dirname(__DIR__, 2) . "/resources/env.php";
 
         include RESOURCES_ROOT . "/connection/mysqlConnection.php";
@@ -8,8 +9,8 @@
 
         $nickname = $_REQUEST['nickname'];
         $email = $_REQUEST['email'];
-        $password = $_REQUEST['password'];
-        $secondPassword = $_REQUEST['secondPassword'];
+        $password = md5($_REQUEST['password']);
+        $secondPassword = md5($_REQUEST['secondPassword']);
 
         if($password !== $secondPassword)
             throw new Exception('Senhas divergentes');
@@ -41,14 +42,21 @@
         $stmt->store_result();
         if($stmt->affected_rows == 0)
             throw new Exception('Erro ao inserir dados no banco de dados');
+        
+        session_start();
+        $_SESSION["loged"] = true;
+        $_SESSION["tempToken"] = "n";
+        $_SESSION["user"] = $nickname;
 
         $stmt->close();
         $conn->close();
 
-        echo $email;
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }else{
-        header("Location: ../index.php");
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         die();
     }
-
+}catch(Exception $ex){
+    header('Location: ' . getPrimaryUrl($_SERVER['HTTP_REFERER']) . '?alertMessage=' .base64_encode($ex->getMessage()) );
+}
 ?>

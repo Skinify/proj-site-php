@@ -15,10 +15,4 @@ function clean($string) {
  function cleanEmail($string){
     return preg_replace('/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i', '', $string);
  }
-
- function isBase64($s)
-   {
-         return (bool) preg_match('/^[a-zA-Z0-9\/\r\n+]*={0,2}$/', $s);
-   }
-
 ?>
