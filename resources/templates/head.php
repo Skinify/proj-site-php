@@ -8,4 +8,10 @@
     <link rel="stylesheet" href="./css/alert.css" type="text/css">
     <script src="./js/alert.js"></script>
     <title><?php echo $pageTitle ?></title>
+
+    <script>
+        if(alertMessage){
+            popAlert(alertMessage);
+        }
+    </script>
 </head>

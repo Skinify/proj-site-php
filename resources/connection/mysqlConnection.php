@@ -1,5 +1,5 @@
 <?php 
-    include "../resources/config.php";
+    include RESOURCES_ROOT . "/config.php";
 
     $conn = null;
 
@@ -16,7 +16,7 @@
             }
         }
         else{
-            $conn = new mysqli($servername, $username, $password, $db);
+            $conn = new mysqli($servername, $username,null, $db);
         }
         
         if ($conn->connect_error) {

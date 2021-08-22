@@ -1,4 +1,4 @@
 <?php
-    include "../resources/utils/includeWithVariables.php";
-    include "../resources/utils/stringClean.php";
+    include RESOURCES_ROOT . "/utils/includeWithVariables.php";
+    include RESOURCES_ROOT . "/utils/stringClean.php";
 ?>

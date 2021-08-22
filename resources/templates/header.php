@@ -28,23 +28,23 @@
             <header>
                 Login
             </header>
-            <input type="text" placeholder="JoooaoXD@hotmail.com" />
-            <input type="password" placeholder="********" />
+            <input type="text" name="email" placeholder="JoooaoXD@hotmail.com" />
+            <input type="password" name="password" placeholder="********" />
             <small href="#" id="small-criar-conta" onclick="toggleCriarContaInputs()">Ainda não possui conta ? Crie
                 uma agora</small>
-            <button>Login</button>
+            <button type="submit" name="submit">Login</button>
         </form>
         <form action="actions/register.php" method="post" id="registerFrm" class="element-hide">
             <header>
                 Registro
             </header>
-            <input type="text" placeholder="JoooaoXD" />
-            <input type="text" placeholder="JoooaoXD@hotmail.com" />
-            <input type="password" placeholder="********" />
-            <input type="password" placeholder="********" />
+            <input type="text" name="nickname" placeholder="JoooaoXD" />
+            <input type="text" name="email" placeholder="JoooaoXD@hotmail.com" />
+            <input type="password" name="password" placeholder="********" />
+            <input type="password" name="secondPassword" placeholder="********" />
             <small href="#" id="small-login" onclick="toggleCriarContaInputs()" onclick="">Já
                 possui conta ? Loge agora</small>
-            <button>Registrar</button>
+            <button type="submit" name="submit">Registrar</button>
         </form>
     </div>
 </div>
