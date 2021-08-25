@@ -1,20 +1,21 @@
 <?php
-
     if(session_status() == 0 ||  session_status() == 1)
-        header('Location: ./index.php');
+        session_start();
 
-    $logado = false;
-    $adm = false;
-
-    if(isset($_SESSION["loged"])){
-        $logado = $_SESSION["loged"];
-        $user = $_SESSION["user"];
-        $adm = $_SESSION["adm"];
-
-        //REQUEST VERIFICANDO SE É ADM MESMO
+    if(isset($_SESSION["adm"])){
+        if($_SESSION["adm"] == false){
+            if(in_array(getPage(),  RESTRICT_PAGES)){
+                header('Location: ' . 'index.php' . '?alertMessage=' .base64_encode('Acesso proibido') );    
+            }else{
+                header('Location: ' . getPrimaryUrl(getHttpRefer()) . '?alertMessage=' .base64_encode('Acesso proibido') );
+            }
+            
+        }
+    }else{
+        if(in_array(getPage(),  RESTRICT_PAGES)){
+            header('Location: ' . 'index.php' . '?alertMessage=' .base64_encode('Acesso proibido') );    
+        }else{
+            header('Location: ' . getPrimaryUrl(getHttpRefer()) . '?alertMessage=' .base64_encode('Acesso proibido') );
+        }
     }
-
-    if($adm == false)
-        header('Location: ./index.php');
-
 ?>

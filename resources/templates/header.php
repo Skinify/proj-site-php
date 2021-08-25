@@ -1,12 +1,40 @@
 <?php
 
-    session_start();
-
+    if(session_status() == 0 ||  session_status() == 1)
+        session_start();
+    
     $logado = false;
 
     if(isset($_SESSION["loged"])){
         $logado = $_SESSION["loged"];
         $user = $_SESSION["user"];
+        $token = $_SESSION["token"];
+        $adm = $_SESSION["adm"];
+
+        $conn = openConnection();
+
+        $stmt = $conn->prepare("select * from user where nickname = (?)");
+        $stmt->bind_param("s", $user);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if($stmt->num_rows == 0){
+            echo "<script>popAlert('Sessão invalida por favor entre novamente')</script>";
+        }else{
+            $stmt->bind_result($r1,$r2,$r3,$r4,$r5);
+
+            $hash = md5($r1.$r2.$r3.$r4.$r5);
+    
+            if($hash != $token){
+                $logado = false;
+                $user = null;
+                $token = null;
+
+                session_abort();
+
+                echo "<script>popAlert('Sessão invalida por favor entre novamente')</script>";
+            }
+        }
     }
 
 

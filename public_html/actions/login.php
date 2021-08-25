@@ -27,7 +27,7 @@ try{
             throw new Exception('Usuario ou senha incorretos');
 
         $_SESSION["loged"] = true;
-        $_SESSION["tempToken"] = "n";
+        $_SESSION["token"] = md5($r1 . $r2 . $r3 . $r4 . $r5);
         $_SESSION["user"] = $nickname;
 
         while($stmt->fetch()){
@@ -37,13 +37,13 @@ try{
         $stmt->close();
         $conn->close();
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: ' . getPrimaryUrl(getHttpRefer()));
     }else{
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: ' . getPrimaryUrl(getHttpRefer()));
         die();
     }
 }catch(Exception $ex){
-    header('Location: ' . getPrimaryUrl($_SERVER['HTTP_REFERER']) . '?alertMessage=' .base64_encode($ex->getMessage()) );
+    header('Location: ' . getPrimaryUrl(getHttpRefer()) . '?alertMessage=' .base64_encode($ex->getMessage()) );
 }
 
 ?>

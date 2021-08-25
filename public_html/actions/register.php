@@ -52,12 +52,12 @@ try{
         $stmt->close();
         $conn->close();
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: ' . getPrimaryUrl(getHttpRefer()));
     }else{
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: ' . getPrimaryUrl(getHttpRefer()));
         die();
     }
 }catch(Exception $ex){
-    header('Location: ' . getPrimaryUrl($_SERVER['HTTP_REFERER']) . '?alertMessage=' .base64_encode($ex->getMessage()) );
+    header('Location: ' . getPrimaryUrl(getHttpRefer()) . '?alertMessage=' .base64_encode($ex->getMessage()) );
 }
 ?>
