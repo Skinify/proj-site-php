@@ -576,3 +576,47 @@
 #manga-controls > div > button:hover{
     transform: scale(1.1);
 }
+
+
+#big-search{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 160px;
+    margin-bottom: -20px;
+}
+
+#big-search > div{
+    display: flex;
+    width: 60%;
+    background-color: #F19A3E;
+    border:0;
+    box-shadow: none;
+    border-radius: 24px;
+    padding: 12px;
+    color:#FFF;
+    justify-content: center;
+    align-items: center;
+}
+
+#big-search > div > input{
+    flex:1;
+    background-color: transparent;
+    border: 0;
+    color:#FFF;
+    font-size: 26px;
+}
+
+#big-search > div > input:focus-visible{
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+#big-search > div > a{
+    font-family: HoloLens MDL2 Assets;
+    font-size: 28px;
+    margin:0 6px;
+    cursor: pointer;
+}

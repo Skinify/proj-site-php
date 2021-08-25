@@ -7,6 +7,6 @@
 
    session_start();
    session_destroy();
-   header('Location: ' . getPrimaryUrl($_SERVER['HTTP_REFERER']));
+   header('Location: ' . $_SERVER['HTTP_REFERER']);
    exit();
 ?>

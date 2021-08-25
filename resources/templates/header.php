@@ -28,7 +28,7 @@
         </li>
         <li id="search-div">
             <button id="search-btn" onclick="toggleSearch()"></button>
-            <input type="text" class="search-input" placeholder="Naruto" />
+            <input type="text" onfocus="searchEventListener(true)" onfocusout="searchEventListener(false)" class="search-input" placeholder="Naruto" />
         </li>
         <?php
             if($logado == true){
@@ -140,4 +140,23 @@
             document.querySelector("input.search-input").classList.add("search-out-anim")
         }
     }
+
+    
+    const searchInput = document.querySelector(".search-input");
+    const searchEvent = function(e){
+        if(e.keyCode === 13){
+            let sValue = searchInput.value.replace(/<.*?>/, "");
+            if(sValue !== "" && sValue !== " ")
+                window.location.href = './search.php?v='+sValue;
+        }
+    }
+
+    const searchEventListener = function (e) {
+        if(e){
+            searchInput.addEventListener("keyup", searchEvent)
+        }else{
+            searchInput.removeEventListener('keyup', searchEvent, false);
+        }
+    }
+
 </script>
