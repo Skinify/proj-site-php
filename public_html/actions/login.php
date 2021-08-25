@@ -21,6 +21,7 @@ try{
         $stmt->bind_param("ss", $nickname, $password);
         $stmt->execute();
         $stmt->store_result();
+        $stmt->bind_result($r1,$r2,$r3,$r4,$r5);
 
         if($stmt->num_rows == 0)
             throw new Exception('Usuario ou senha incorretos');
@@ -28,6 +29,10 @@ try{
         $_SESSION["loged"] = true;
         $_SESSION["tempToken"] = "n";
         $_SESSION["user"] = $nickname;
+
+        while($stmt->fetch()){
+            $_SESSION["adm"] = $r5 == 1;
+        }
 
         $stmt->close();
         $conn->close();

@@ -1,4 +1,4 @@
-<?php include "../resources/templates/base.php"; ?>
+<?php include dirname(__DIR__, 1) . "/resources/templates/base.php";  ?>
 <html lang="pt-br">
     <?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => 'Mange online'));?>
     <body>

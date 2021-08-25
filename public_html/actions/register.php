@@ -47,6 +47,7 @@ try{
         $_SESSION["loged"] = true;
         $_SESSION["tempToken"] = "n";
         $_SESSION["user"] = $nickname;
+        $_SESSION["adm"] = false;
 
         $stmt->close();
         $conn->close();

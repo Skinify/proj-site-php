@@ -1,5 +1,4 @@
-<?php include "../resources/templates/base.php"; ?>
-
+<?php include dirname(__DIR__, 1) . "/resources/templates/base.php";  ?>
 <?php
 
     $s = "";
@@ -33,7 +32,7 @@
                     'sectionTitle' =>  "Resultados da pesquisa '${s}'",
                     'sectionNotch' => 'naruto-notch'
                 ));
-            ?>
+        ?>
     </div>
 
     <script>
