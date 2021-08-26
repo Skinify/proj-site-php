@@ -620,3 +620,20 @@
     margin:0 6px;
     cursor: pointer;
 }
+
+.table-container{
+    margin: auto;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-container > a{
+    text-align: end;
+}
+
+.table-container > table{
+    background-color: #FFF;    
+    border-radius: 6px;
+    box-shadow: 2px 2px 6px 1px #afafafad;
+}
