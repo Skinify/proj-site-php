@@ -172,13 +172,11 @@
 .content-section{
     background-color: #FFF;
     width: 80%;
-    border-radius: 4px;
-    /* height: 100px; */
     display: flex;
     flex-direction: column;
-    /*border: 1px solid gainsboro;*/
-    box-shadow: 2px 2px 6px 1px #afafafad;
     padding-bottom: 20px;
+    box-shadow: 0px 0px 60px 0px #00000024;
+    border-radius: 12px;
 }
 
 .section-title > h2{
@@ -634,6 +632,70 @@
 
 .table-container > table{
     background-color: #FFF;    
-    border-radius: 6px;
-    box-shadow: 2px 2px 6px 1px #afafafad;
+    box-shadow: 0px 0px 60px 0px #00000024;
+    border-radius: 12px;
+}
+
+#add-manga-container{
+    background-color: #FFF;
+    margin: auto;
+    margin-top: 140px;
+    display: flex;
+    flex-direction: row;
+    padding:16px;
+    box-shadow: 0px 0px 60px 0px #00000024;
+    border-radius: 12px;
+}
+
+#add-manga-container input, #add-manga-container textarea{
+    padding: 12px;
+    background-color: #dcdbdb3d;
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+#add-manga-container textarea{
+    flex:1;
+    min-height: 200px;
+    min-width: 500px;
+    max-width: 800px;
+}
+
+#add-manga-container button{
+    padding: 12px;
+    margin: 12px 0;
+    border: none;
+    background-color: #F19A3E;
+    color: #FFF;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+#add-manga-container button:hover{
+    background-color: #e28c30;
+}
+
+#add-manga-container > div:first-child{
+    display: flex;
+    flex-direction: column;
+    margin:0 12px;
+}
+
+
+#add-manga-container > div:last-child{
+    display: flex;
+    flex-direction: column;
+    margin:0 12px;
+}
+
+#add-manga-container img{
+    flex:1;
+    height: calc(var(--manga-height) * 1.4);
+}
+
+input[type="text"]:read-only{
+    background-color: #efefef !important;
+    pointer-events: none;
 }

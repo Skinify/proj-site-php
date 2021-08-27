@@ -27,7 +27,7 @@ try{
         $stmt->close();
         $conn->close();
 
-        header('Location: ' . getPrimaryUrl(getHttpRefer()));
+        header('Location: ' . getPrimaryUrl(getHttpRefer()) . '?alertMessage=' .base64_encode("Sucesso") );
 }catch(Exception $ex){
     header('Location: ' . getPrimaryUrl(getHttpRefer()) . '?alertMessage=' .base64_encode($ex->getMessage()) );
 }
