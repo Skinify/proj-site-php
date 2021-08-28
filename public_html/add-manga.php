@@ -21,7 +21,7 @@
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
                 $stmt->store_result();
-                $stmt->bind_result($r1,$r2,$r3,$r4);
+                $stmt->bind_result($r1,$r2,$r3,$r4,$r5);
 
                 if($stmt->num_rows == 0){
                     $editing = false;
@@ -60,10 +60,19 @@
         </div>
         <div>
             <label style="text-align:center" for="file-input">Capa</label>
-            <img src="./img/mangas-thumb/naruto-manga-thumb.jpg" />
-            <input type="file" id="file-input" accept="image/png, image/jpeg"/>
+            <input type="hidden" id="capa-base" name="capa-base" value="<?php echo isset($editing) && $editing == true ? $r5 : 'vazio'?>">
+            <img src="<?php echo isset($editing) && $editing == true ? $r5 : './img/mangas-thumb/empty-thumb.png'?>" id="capa-thumb"/>
+            <input type="file" name="capa" id="file-input" accept="image/png, image/jpeg" onChange="changeImage(this.files)"/>
         </div>
     </form>
+    <script>
+
+            const changeImage = function(e){
+                base64Reader(e[0], (base) => document.querySelector("#capa-thumb").src = base)
+                base64Reader(e[0], (base) => document.querySelector("#capa-base").value = base)
+            }
+
+    </script>
 </body>
 
 </html>

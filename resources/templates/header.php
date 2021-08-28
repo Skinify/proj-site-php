@@ -59,7 +59,7 @@
             <input type="text" onfocus="searchEventListener(true)" onfocusout="searchEventListener(false)" class="search-input" placeholder="Naruto" />
         </li>
         <?php
-            if($logado == true){
+            if($logado == true && $adm == false){
                 echo "      
                 <li id='logged'>
                     Bem vindo {$user}
@@ -67,6 +67,19 @@
                         <ul>
                             <li><a>Minha conta</a></li>
                             <li><a>Favoritos</a></li>
+                            <li><a href='actions/logout.php'>Sair</a></li>
+                        </ul>
+                    </div>
+                </li>";
+            }else if($logado == true && $adm == true){
+                echo "      
+                <li id='logged'>
+                    Bem vindo {$user}
+                    <div id='logged-dropbox'>
+                        <ul>
+                            <li><a>Minha conta</a></li>
+                            <li><a>Favoritos</a></li>
+                            <li><a href='list-mangas.php'>Alterar mangas</a></li>
                             <li><a href='actions/logout.php'>Sair</a></li>
                         </ul>
                     </div>

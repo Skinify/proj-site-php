@@ -23,7 +23,7 @@
 
             $conn = openConnection();
 
-            $stmt = $conn->prepare("select * from manga");
+            $stmt = $conn->prepare("select `id`, `nome`, `desc`, `autor` from manga");
             //$stmt->bind_param("ss", $nickname, $password);
             $stmt->execute();
             $stmt->store_result();

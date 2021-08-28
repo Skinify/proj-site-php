@@ -19,14 +19,17 @@ try{
         $titulo = $_REQUEST['titulo'];
         $autor = $_REQUEST['autor'];
         $desc = $_REQUEST['desc'];
+        $capa = $_REQUEST['capa-base'];
+
         if(!isset($id)){
-            $stmt = $conn->prepare("insert into manga values(null, (?), (?), (?))");
-            $stmt->bind_param("sss", $titulo, $autor, $desc);
+            $stmt = $conn->prepare("insert into manga values(null, (?), (?), (?), (?))");
+            $stmt->bind_param("ssss", $titulo, $autor, $desc, $capa);
         }else{
             $editando = true;
-            $stmt = $conn->prepare("update manga set `nome` = (?), `autor` = (?), `desc` = (?) where `id` = (?)");
-            $stmt->bind_param("sssi", $titulo, $autor, $desc, $id);
+            $stmt = $conn->prepare("update manga set `nome` = (?), `autor` = (?), `desc` = (?), `capa` = (?) where `id` = (?)");
+            $stmt->bind_param("ssssi", $titulo, $autor, $desc, $capa, $id);
         }
+
 
         $stmt->execute();
         $stmt->store_result();
@@ -39,10 +42,10 @@ try{
             }
         }
 
-        header('Location: ' . '../list-mangas.php' . '?alertMessage=' .base64_encode("Sucesso") );
-
         $stmt->close();
         $conn->close();
+
+        header('Location: ' . '../list-mangas.php' . '?alertMessage=' .base64_encode("Sucesso") );
 }catch(Exception $ex){
     header('Location: ' . getPrimaryUrl(getHttpRefer()) . '?alertMessage=' .base64_encode($ex->getMessage()) );
 }

@@ -691,8 +691,9 @@
 }
 
 #add-manga-container img{
-    flex:1;
-    height: calc(var(--manga-height) * 1.4);
+    height: calc(var(--manga-height) * 1.4) !important;
+    width: calc(var(--manga-height) * 1.4 * 0.708) !important;
+    object-fit: cover;
 }
 
 input[type="text"]:read-only{
