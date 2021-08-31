@@ -17,6 +17,7 @@
                 <th>Nome</th>
                 <th>Autor</th>
                 <th>Desc</th>
+                <th>Capitulos</th>
                 <th>Ações</th>
             </tr>
             <?php
@@ -41,6 +42,7 @@
                             <td>{$r2}</td>
                             <td>{$r4}</td>
                             <td>{$r3}</td>
+                            <td><button><a href='manga-chapters.php?id={$r1}'>Editar</a></button><button</td>
                             <td><button><a href='add-manga.php?id={$r1}'>Editar</a></button><button><a href='actions/exclude-manga.php?id={$r1}'>Excluir</a></button></td>
                         </tr>";
             }

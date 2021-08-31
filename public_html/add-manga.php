@@ -34,7 +34,7 @@
         ?>
 
 
-    <form id="add-manga-container" action="actions/handle-manga.php" method="post">
+    <form class="default-form" action="actions/handle-manga.php" method="post">
         <div>
             <?php
                 if($editing){
