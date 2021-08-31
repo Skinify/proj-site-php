@@ -9,28 +9,27 @@
 
             
 
-            $editing = false;
             $id = 0;
-
-            $r1 = ""; $r2= ""; $r3 = ""; $r4 = "";
+            $array = [];
+            $r1 = "";
             $queries = array();
+
             parse_str($_SERVER['QUERY_STRING'], $queries);
             if(array_key_exists('id', $queries)){
-                $editing = true;
                 $id = clean($queries['id']);
                 $conn = openConnection();
-                $stmt = $conn->prepare("select * from manga where id = (?)");
+                $stmt = $conn->prepare("select `Id` from capitulo where `IdManga` = (?)");
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
                 $stmt->store_result();
-                $stmt->bind_result($r1,$r2,$r3,$r4,$r5);
-
+                $stmt->bind_result($r1);
                 if($stmt->num_rows == 0){
-                    $editing = false;
-                    echo "<script> popAlert('O manga não existe'); </script>";
+                    echo "<script> popAlert('O manga não possui capitulos ainda'); </script>";
                 }else{
-                    $editing = true;
-                    while($stmt->fetch()){}
+                    while($stmt->fetch()){
+                        array_push($array, $r1);
+                        //var_dump($array);
+                    }
                 }
             }
 
@@ -43,10 +42,14 @@
         <div>
             <label> Capitulo </label>
             <div id="chapter-div">
-                <select>
-                    <option value="0">a</option>
-                    <option value="1">b</option>
-                    <option value="2">c</option>
+                <select onChange="selectChapter(this)">
+                    <?php 
+                        $i = 1;
+                        foreach ($array as $value){
+                            echo "<option value='$value'> $i </option>";
+                            $i++;
+                        }
+                    ?>
                 </select>
                 <button onClick="addChapter(true)">+</button>
                 <button onClick="addChapter(false)">-</button>
@@ -106,45 +109,78 @@
             }
         }
 
-        const addChapter = function(i){
+        const selectChapter = function(e){
+            console.log(e.value)
+            //REQUISIÇÃO PARA BUSCAR INFO DO CAPITULO E PAGINAS
+        }
 
+
+        const chapterRequest = async function(e){
+            try{
+                let res = await fetch('actions/handle-chapters.php', {
+                    headers:{
+                        "Content-Type": "application/json;charset=UTF-8",
+                    },
+                    method: "POST",
+                    body: JSON.stringify({
+                        valor:e,
+                        manga:document.querySelector("#manga-id").value,
+                    })
+                });
+            }catch(ex){
+                console.log(ex)
+            }
+            refreshChapters()
+        }
+
+
+        const refreshChapters = async function(){
+            try{
+                let res = await fetch('actions/list-manga-chapters.php', {
+                    headers:{
+                        "Content-Type": "application/json;charset=UTF-8",
+                    },
+                    method: "POST",
+                    body: JSON.stringify({
+                        manga:document.querySelector("#manga-id").value,
+                    })
+                });
+                let t = await res.json()
+                document.querySelector("select").innerHTML = "";
+                let it = 1;
+                t.data.forEach(x => {
+                    let option = document.createElement("option")
+                    option.innerText = it;
+                    option.value = x;
+                    it++;
+                    document.querySelector("select").appendChild(option);
+                })
+            }catch(ex){
+                console.log(ex)
+            }
+        }
+
+        const addChapter = function(i){
             if(i == true){
                 let option = document.createElement("option")
-                option.innerText = "1"
-                option.value = "1"
+                if(document.querySelector("option:last-of-type") != null){
+                    option.innerText = eval(document.querySelector("option:last-of-type").innerHTML) + 1;
+                }else{
+                    option.innerText = 1;
+                }
                 document.querySelector("select").appendChild(option);
+                chapterRequest(0)
             }else{
                 let currentChap = document.querySelector("select").value;
-                if(currentChap !== "")
+                if(currentChap !== ""){
                     document.querySelector(`option[value='${currentChap}']`).remove();
+                    chapterRequest(currentChap);
+                }   
             }
 
-
-            return;
-
-            let request = new XMLHttpRequest();
-
-            let allPages = []
-            document.querySelectorAll(".page-img").forEach(x => allPages.push(x.src))
-
-            request.open("POST", 'actions/handle-chapter.php', false);
-            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-            let payload = {
-                data:{
-                    mangaId:document.querySelector("#manga-id").value,
-                    capituloId:document.querySelector("select").value,
-                    title:document.querySelector("#titulo").value,
-                    desc:document.querySelector("#desc").value,
-                    allPages
-                }
-            }
-            request.send(JSON.stringify(payload));
-
-            request.onreadystatechange = function (e) {
-                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                    console.log(e)
-                }
+            let currentChap = document.querySelector("select").value;
+            if(currentChap !== ""){
+                selectChapter(document.querySelector("select"))
             }
         }
 
