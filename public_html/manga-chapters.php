@@ -110,6 +110,7 @@
         }
 
         const selectChapter = async function(e){
+            toggleLoading(true);
             document.querySelector("#pages-container").innerHTML = "";
             try{
                 let res = await fetch('actions/chapters-info.php', {
@@ -145,10 +146,10 @@
                     div.appendChild(btn)
                     document.querySelector("#pages-container").appendChild(div);
                 }
-
             }catch(ex){
                 console.log(ex)
             }
+            toggleLoading(false);
         }
 
 
@@ -222,6 +223,7 @@
         }
 
         const saveChapter = async function () {
+            toggleLoading(true);
             try{
                 let allPages = []
                 document.querySelectorAll(".page-img").forEach(x => allPages.push(x.src))
@@ -248,6 +250,7 @@
             }catch(ex){
                 console.log(ex)
             }
+            toggleLoading(false);
         }
 
         if(document.querySelector("select").value !== "")

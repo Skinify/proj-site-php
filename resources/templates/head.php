@@ -6,13 +6,19 @@
     <link rel="stylesheet" href="./css/estilo.css" type="text/css">
     <link rel="stylesheet" href="./css/notchs.css" type="text/css">
     <link rel="stylesheet" href="./css/alert.css" type="text/css">
+    <link rel="stylesheet" href="./css/loading.css" type="text/css">
     <script src="./js/alert.js"></script>
     <script src="./js/base64Reader.js"></script>
+    <script src="./js/loading.js"></script>
     <title><?php echo $pageTitle ?></title>
 
     <script>
-        if(typeof alertMessage !== 'undefined'){
+        if (typeof alertMessage !== 'undefined') {
             popAlert(alertMessage);
         }
     </script>
+    <div id="loading" class="display-none">
+        <div id="loading-circle"></div>
+        <a>Carregando...</a>
+    </div>
 </head>

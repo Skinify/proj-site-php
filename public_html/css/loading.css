@@ -1,0 +1,43 @@
+#loading{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: #00000091;
+    z-index: 99;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+@keyframes turning {
+    0%{
+        transform: rotate(0deg);
+        border-top-width:2px;
+    }
+
+    50%{
+        border-top-width:22px;
+    }
+
+    100%{
+        transform: rotate(360deg);
+        border-top-width:2px;
+    }
+}
+
+#loading-circle{
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    border:6px solid #F19A3E;
+    border-top-width:4px;
+    animation-name: turning;
+    animation-duration: 2s;
+    animation-iteration-count:infinite;
+}
+
+.display-none{
+    display: none !important;
+    z-index: -99;
+}
