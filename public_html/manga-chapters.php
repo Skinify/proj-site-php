@@ -109,9 +109,46 @@
             }
         }
 
-        const selectChapter = function(e){
-            console.log(e.value)
-            //REQUISIÇÃO PARA BUSCAR INFO DO CAPITULO E PAGINAS
+        const selectChapter = async function(e){
+            document.querySelector("#pages-container").innerHTML = "";
+            try{
+                let res = await fetch('actions/chapters-info.php', {
+                    headers:{
+                        "Content-Type": "application/json;charset=UTF-8",
+                    },
+                    method: "POST",
+                    body: JSON.stringify({
+                        capituloId:e.value,
+                    })
+                });
+                let t = await res.json()
+                document.querySelector("#titulo").value = t.data.Titulo
+                document.querySelector("#desc").value = t.data.Desc
+                for (var img64 of t.data.Pages) {
+                    paginas++;
+                    var div = document.createElement("div")
+                    div.classList.add("page-wrapper")
+                    var a = document.createElement("a");
+                    a.innerText = paginas;
+                    a.classList.add("page-number");
+                    div.appendChild(a)
+                    var img = document.createElement("img");
+                    img.classList.add("page-img");
+                    img.src = img64
+                    div.appendChild(img)
+                    var btn = document.createElement("button")
+                    btn.type = "button"
+                    btn.onclick = function () {
+                        removePageAndReorder(this)
+                    };
+                    btn.innerText = "X"
+                    div.appendChild(btn)
+                    document.querySelector("#pages-container").appendChild(div);
+                }
+
+            }catch(ex){
+                console.log(ex)
+            }
         }
 
 
@@ -184,32 +221,37 @@
             }
         }
 
-        const saveChapter = function () {
-            let request = new XMLHttpRequest();
+        const saveChapter = async function () {
+            try{
+                let allPages = []
+                document.querySelectorAll(".page-img").forEach(x => allPages.push(x.src))
 
-            let allPages = []
-            document.querySelectorAll(".page-img").forEach(x => allPages.push(x.src))
-
-            request.open("POST", 'actions/handle-pages.php', false);
-            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-            let payload = {
-                data:{
-                    mangaId:document.querySelector("#manga-id").value,
-                    capituloId:document.querySelector("select").value,
-                    title:document.querySelector("#titulo").value,
-                    desc:document.querySelector("#desc").value,
-                    allPages
+                let payload = {
+                    data:{
+                        mangaId:document.querySelector("#manga-id").value,
+                        capituloId:document.querySelector("select").value,
+                        title:document.querySelector("#titulo").value,
+                        desc:document.querySelector("#desc").value,
+                        allPages
+                    }
                 }
-            }
-            request.send(JSON.stringify(payload));
 
-            request.onreadystatechange = function (e) {
-                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                    console.log(e)
-                }
+                let res = await fetch('actions/handle-pages.php', {
+                    headers:{
+                        "Content-Type": "application/json;charset=UTF-8",
+                    },
+                    method: "POST",
+                    body: JSON.stringify(payload)
+                });
+                let t = await res.json()
+                popAlert("Sucesso");
+            }catch(ex){
+                console.log(ex)
             }
         }
+
+        if(document.querySelector("select").value !== "")
+            selectChapter(document.querySelector("select"))
     </script>
 </body>
 
