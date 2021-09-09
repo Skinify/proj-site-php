@@ -1,0 +1,344 @@
+
+#header{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 4;
+    transition: background-color .2s ease;
+}
+
+#header-title{
+    text-decoration: none !important;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+    padding:20px;
+    transition: all .2s ease;
+    color: inherit;
+}
+
+.header-on-top{
+    text-shadow: 0px 0px 16px #f19a5d !important; 
+    margin-bottom: -80px;
+    background-color: transparent ;
+    color:#F19A3E ;
+}
+
+.header-scrolling{
+    background-color: #F19A3E;
+    position: fixed;
+    color:#FFF;
+    box-shadow: 0px 8px 6px 1px #0000003d;
+    animation: header-appearing;
+    animation-duration: .2s;
+}
+
+#header:hover{
+    background-color: #F19A3E ;
+    color:#FFF ;
+    box-shadow: 0px 8px 6px 1px #0000003d;
+    text-shadow: none;
+}
+
+
+@keyframes header-appearing {
+    from{
+        top:-80px
+    }
+    to{
+        top:0px
+    }
+}
+
+#header > ul{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease;
+    margin-right: 20px;
+}
+
+#header > ul > li{
+    padding:0 12px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#header > ul > li:hover{
+    background-color: #e28c30;
+}
+
+#header > ul > li > a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+
+#search-div{
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+
+#login-btn{
+    font-family: HoloLens MDL2 Assets;
+    padding:0 22px !important;
+}
+
+#search-btn{
+    font-family: HoloLens MDL2 Assets;
+    background-color: transparent;
+    padding:12px;
+    color: inherit;
+    box-shadow: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.search-input{
+    background-color: #FFF;
+    box-shadow: none;
+    padding:10px 14px;
+    border: none;
+    margin:0 12px;
+    border-radius: 16px;
+    width: 200px;
+    animation-fill-mode: forwards;
+    display: none;
+    transition: transform .2s ease;
+}
+
+.search-input:focus{
+    transform: scale(1.02);
+}
+
+.search-input:focus-visible{
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.search-in-anim{
+    animation: search-in;
+    animation-duration: .2s;
+    display: block;
+    animation-fill-mode: forwards;
+}
+
+.search-out-anim{
+    animation: search-out;
+    animation-duration: .2s;
+    display: block;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes search-in {
+    0%{
+        display: block !important;
+        width: 0px;
+    }
+    100%{
+        width: 200px;
+    }
+}
+
+@keyframes search-out {
+    0%{
+        width: 200px;
+    }
+    99%{
+        width: 0px;
+        display: block !important;
+    }
+    100%{
+        width: 0px;
+        display: none !important;
+        margin-left:-42px;
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+#category{
+    position: relative;
+}
+
+#category:hover > #category-dropbox{
+    display: inherit !important;
+}
+
+#category-dropbox{
+    display: none;
+    position: absolute;
+    background-color: #F19A3E !important;
+    color:#FFF;
+    top: 100%;
+}
+
+#category-dropbox > ul > li{
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    position:relative;
+    display: flex;
+}
+
+#category-dropbox > ul > li:hover{
+    background-color: #e28c30 !important;
+}
+
+#category-dropbox > ul > li > a{
+    height: 100%;
+    width: 100%;
+    padding: 12px 20px;
+}
+
+#logged{
+    position: relative;
+}
+
+#logged:hover > #logged-dropbox{
+    display: inherit !important;
+}
+
+#logged-dropbox{
+    display: none;
+    position: absolute;
+    background-color: #F19A3E !important;
+    color:#FFF;
+    top: 100%;
+}
+
+#logged-dropbox > ul > li{
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    position:relative;
+    display: flex;
+}
+
+#logged-dropbox > ul > li:hover{
+    background-color: #e28c30 !important;
+}
+
+#logged-dropbox > ul > li > a{
+    height: 100%;
+    width: 100%;
+    padding: 12px 20px;
+}
+
+#header-mobile{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 4;
+    padding:0 24px;
+    justify-content: space-between;
+    position: fixed;
+    background-color: #F19A3E;
+    position: fixed;
+    color: #FFF;
+}
+
+
+#header-mobile > #logo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#btn-open-mobile-menu{
+    background-color: transparent;
+    color: #FFF;
+    border: 0;
+    font-family: 'HoloLens MDL2 Assets';
+    font-size: 32px;
+    cursor: pointer;
+}
+
+#mobile-search-btn{
+    font-family: HoloLens MDL2 Assets;
+    background-color: transparent;
+    padding:12px;
+    color: inherit;
+    box-shadow: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#lateral-menu{
+    width: 80%;
+    flex-direction: row;
+    justify-content: start;
+    position: fixed;
+    left: -100%;
+    padding: 0;
+    margin: 0;
+    top: 60px;
+    background: #e28e36;
+    padding: 12px 0;
+    height: 100%;
+}
+
+#lateral-menu > ul{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+#lateral-menu > ul > li{
+    margin:6px 0;
+    padding:16px 12px;
+    cursor: pointer;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.lateral-menu-outanim{
+    animation: lateral-menu-out 0.3s ease forwards !important;
+}
+
+.lateral-menu-enteranim{
+    animation: lateral-menu-enter 0.3s ease forwards !important;
+}
+
+@keyframes lateral-menu-enter {
+    from{
+        left:-100%
+    }
+    to{
+        left:0;
+    }
+}
+
+@keyframes lateral-menu-out {
+    from{
+        left:0
+    }
+    to{
+        left:-100%;
+        display: none !important;
+    }
+}

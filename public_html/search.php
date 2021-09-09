@@ -6,8 +6,6 @@
     parse_str($_SERVER['QUERY_STRING'], $queries);
     if(array_key_exists('v', $queries)){
         $s = clean($queries['v']);
-    }else{
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
 ?>
