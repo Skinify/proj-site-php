@@ -57,7 +57,7 @@
             <label for="titulo">Titulo</label>
             <input id="titulo" name="titulo" type="text">
             <label for="desc">Descrição</label>
-            <textarea id="desc" name="desc"><?php echo $r4?></textarea>
+            <textarea id="desc" name="desc"></textarea>
             <button type="button" onClick="saveChapter(this)">Salvar paginas</button>
         </div>
         <div>
@@ -96,6 +96,7 @@
                 var img = document.createElement("img");
                 img.classList.add("page-img");
                 img.src = await base64Reader(file)
+                img.setAttribute("ordem", paginas);
                 div.appendChild(img)
                 var btn = document.createElement("button")
                 btn.type = "button"
@@ -135,7 +136,8 @@
                     div.appendChild(a)
                     var img = document.createElement("img");
                     img.classList.add("page-img");
-                    img.src = img64
+                    img.src = img64.img
+                    img.setAttribute("ordem", paginas);
                     div.appendChild(img)
                     var btn = document.createElement("button")
                     btn.type = "button"
@@ -225,10 +227,16 @@
         }
 
         const saveChapter = async function () {
+            if(document.querySelector("select").options.length == 0)
+                return;
+                
             toggleLoading(true);
             try{
                 let allPages = []
-                document.querySelectorAll(".page-img").forEach(x => allPages.push(x.src))
+                document.querySelectorAll(".page-img").forEach(x => allPages.push({
+                    img: x.src,
+                    ordem: x.getAttribute("ordem")
+                }))
 
                 let payload = {
                     data:{
@@ -236,6 +244,7 @@
                         capituloId:document.querySelector("select").value,
                         title:document.querySelector("#titulo").value,
                         desc:document.querySelector("#desc").value,
+                        ordem:document.querySelector("select").options[document.querySelector("select").selectedIndex].text,
                         allPages
                     }
                 }

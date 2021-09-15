@@ -19,13 +19,14 @@ try{
         $stmt->store_result();
 
         foreach ($data["data"]["allPages"] as $value){
-            $stmt = $conn->prepare("INSERT INTO `pagina` (`Id`, `IdCapitulo`, `Imagem`) VALUES (NULL, (?), (?));");
-            $stmt->bind_param("is", $data["data"]["capituloId"], $value);
+            $stmt = $conn->prepare("INSERT INTO `pagina` (`Id`, `IdCapitulo`, `Imagem`, `ordem`) VALUES (NULL, (?), (?), (?))");
+            $stmt->bind_param("isi", $data["data"]["capituloId"], $value["img"], $value["ordem"]);
             $stmt->execute();
+            var_dump($stmt->error);
         };
 
-        $stmt = $conn->prepare("update capitulo set `Titulo` = (?), `Desc` = (?) where `Id` = (?)");
-        $stmt->bind_param("ssi", $data["data"]["title"], $data["data"]["desc"], $data["data"]["capituloId"]);
+        $stmt = $conn->prepare("update capitulo set `Titulo` = (?), `Desc` = (?), `Ordem` = (?) where `Id` = (?)");
+        $stmt->bind_param("ssii", $data["data"]["title"], $data["data"]["desc"], $data["data"]["ordem"], $data["data"]["capituloId"]);
         $stmt->execute();
         $stmt->store_result();
 

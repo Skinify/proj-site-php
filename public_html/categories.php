@@ -26,7 +26,7 @@
     
         }
     ?>
-    <?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => array_key_exists('category', $queries) ? clean("Manga Online - {$queries['category']}") : 'Categoria' ));?>
+    <?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => array_key_exists('category', $queries) ? clean("Mangá Online - {$queries['category']}") : 'Categoria' ));?>
     <body>
         <?php 
             include("../resources/templates/header.php");

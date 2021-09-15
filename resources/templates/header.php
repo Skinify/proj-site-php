@@ -41,9 +41,8 @@
 ?>
 
 <nav id="header" class="header-on-top">
-    <a id="header-title" href="index.php">Manga Online</a>
+    <a id="header-title" href="index.php">Mangá Online</a>
     <ul>
-        <li><a href="most-read.php">Mais lidos</a></li>
         <li>Leitura aleatoria</li>
         <li id="category">Categorias ▼
             <div id="category-dropbox">
@@ -112,11 +111,10 @@
 <nav id="header-mobile" class="header-on-top">
     <div id="logo-container">
         <button onclick="toggleLateralMenu()" id="btn-open-mobile-menu"></button>
-        <a id="header-title" href="index.php">Manga Online</a>
+        <a id="header-title" href="index.php">Mangá Online</a>
     </div>
     <div id="lateral-menu" class="d-flex">
         <ul>
-            <li><a href="most-read.php">Mais lidos</a></li>
             <li>Leitura aleatoria</li>
             <li>Categorias ▼</li>
         </ul>

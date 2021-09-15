@@ -17,6 +17,7 @@ try{
         $r3 = "";
         $r4 = "";
         $r5 = "";
+        $ordemCapitulo = "";
         $pages = [];
         $conn = openConnection();
 
@@ -24,7 +25,7 @@ try{
         $stmt->bind_param("i", $data["capituloId"]);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($r1, $r2, $r3, $r4);
+        $stmt->bind_result($r1, $r2, $r3, $r4, $ordemCapitulo);
 
         if($stmt->num_rows == 0){
             echo json_encode([
@@ -36,15 +37,18 @@ try{
         }
         
 
-        $stmt = $conn->prepare("select `Imagem` from pagina where `IdCapitulo` = (?)");
+        $stmt = $conn->prepare("select `Imagem`, `Ordem` from pagina where `IdCapitulo` = (?)");
         $stmt->bind_param("i", $data["capituloId"]);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($r5);
+        $stmt->bind_result($r5, $r7);
         
         if($stmt->num_rows > 0){
             while($stmt->fetch()){
-                array_push($pages, $r5);
+                array_push($pages, [
+                    'img' => $r5,
+                    'ordem' => $r7
+                ]);
             }
         }
 
@@ -56,6 +60,7 @@ try{
                 'Id' => $r1,
                 'IdManga' => $r2,
                 'Titulo' => $r3,
+                'Ordem' => $ordemCapitulo,
                 'Desc' => $r4,
                 'Pages' => $pages,
             ]

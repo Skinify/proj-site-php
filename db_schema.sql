@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Set-2021 às 16:26
+-- Tempo de geração: 16-Set-2021 às 00:44
 -- Versão do servidor: 10.4.20-MariaDB
 -- versão do PHP: 8.0.9
 
@@ -31,7 +31,8 @@ CREATE TABLE `capitulo` (
   `Id` int(11) NOT NULL,
   `IdManga` int(11) NOT NULL,
   `Titulo` varchar(50) DEFAULT NULL,
-  `Desc` varchar(500) DEFAULT NULL
+  `Desc` varchar(500) DEFAULT NULL,
+  `Ordem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -69,7 +70,8 @@ CREATE TABLE `manga` (
 CREATE TABLE `pagina` (
   `Id` int(11) NOT NULL,
   `IdCapitulo` int(11) NOT NULL,
-  `Imagem` mediumtext NOT NULL
+  `Imagem` mediumtext NOT NULL,
+  `Ordem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

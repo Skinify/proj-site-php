@@ -1,6 +1,6 @@
 <?php include dirname(__DIR__, 1) . "/resources/templates/base.php";  ?>
 <html lang="pt-br">
-    <?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => 'Mange online'));?>
+    <?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => 'Mangá online'));?>
     <body>
         <?php 
             include("../resources/templates/header.php");
@@ -26,7 +26,7 @@
         <div id="splash-screen">
             <div id="splash-screen-background"></div>
             <div id="title-container">
-                <a id="first-title">Manga</a>
+                <a id="first-title">Mangá</a>
                 <a id="second-title">Online</a>
                 <img src="./img/crown.png" id="title-notch" />
             </div>
@@ -34,7 +34,7 @@
         <div id="content">
             <?php
                 includeWithVariables("../resources/templates/section.php", array(
-                    'sectionTitle' => 'Catalogo',
+                    'sectionTitle' => 'Ultimas novidades',
                     'sectionNotch' => 'naruto-notch',
                     'sectionItems' => $array
                 ));
