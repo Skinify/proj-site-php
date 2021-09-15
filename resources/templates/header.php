@@ -135,8 +135,6 @@
 
     var windowDimensionsProxy = new Proxy(windowDimensions, {
         set: function (target, key, value) {
-            console.log("TESTE")
-            console.log(value)
             if (key === "width" && value < 800) {
                 toggleMobileMenu(true)
             } else {

@@ -20,16 +20,16 @@ try{
         $autor = $_REQUEST['autor'];
         $desc = $_REQUEST['desc'];
         $capa = $_REQUEST['capa-base'];
+        $genero = $_REQUEST['genero'];
 
         if(!isset($id)){
-            $stmt = $conn->prepare("insert into manga values(null, (?), (?), (?), (?))");
-            $stmt->bind_param("ssss", $titulo, $autor, $desc, $capa);
+            $stmt = $conn->prepare("insert into manga values(null, (?), (?), (?), (?), (?))");
+            $stmt->bind_param("sssis", $titulo, $autor, $desc, $genero, $capa);
         }else{
             $editando = true;
-            $stmt = $conn->prepare("update manga set `nome` = (?), `autor` = (?), `desc` = (?), `capa` = (?) where `id` = (?)");
-            $stmt->bind_param("ssssi", $titulo, $autor, $desc, $capa, $id);
+            $stmt = $conn->prepare("update manga set `nome` = (?), `autor` = (?), `desc` = (?), `idGenero` = (?),  `capa` = (?) where `id` = (?)");
+            $stmt->bind_param("sssisi", $titulo, $autor, $desc, $genero, $capa, $id);
         }
-
 
         $stmt->execute();
         $stmt->store_result();

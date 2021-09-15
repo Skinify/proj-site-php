@@ -482,9 +482,11 @@ input[type="text"]:read-only{
 }
 
 
-#chapter-div > select{
+.default-select{
     flex:1;
     height: 30px;
+    max-height: 30px;
+    min-height: 30px;
     border-radius: 4px;
     border: none;
     background-color: #f19a3e;

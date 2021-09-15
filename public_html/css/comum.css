@@ -40,3 +40,8 @@ ul{
     text-decoration: none;
     color: inherit;
   }
+
+  button:disabled,
+  button[disabled]{
+    background-color: #cccccc !important;
+  }

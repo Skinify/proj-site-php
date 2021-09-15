@@ -17,18 +17,18 @@
                 <th>Nome</th>
                 <th>Autor</th>
                 <th>Desc</th>
+                <th>Genero</th>
                 <th>Capitulos</th>
                 <th>Ações</th>
             </tr>
             <?php
 
             $conn = openConnection();
-
-            $stmt = $conn->prepare("select `id`, `nome`, `desc`, `autor` from manga");
+            $stmt = $conn->prepare("SELECT A.`id`, `nome`, `desc`, `autor`, `genero` FROM `manga` A inner join genero B on A.IdGenero = B.Id");
             //$stmt->bind_param("ss", $nickname, $password);
             $stmt->execute();
             $stmt->store_result();
-            $stmt->bind_result($r1,$r2,$r3,$r4);
+            $stmt->bind_result($r1,$r2,$r3,$r4, $r5);
 
 
             if($stmt->num_rows == 0)
@@ -42,6 +42,7 @@
                             <td>{$r2}</td>
                             <td>{$r4}</td>
                             <td>{$r3}</td>
+                            <td>{$r5}</td>
                             <td><button><a href='manga-chapters.php?id={$r1}'>Editar</a></button><button</td>
                             <td><button><a href='add-manga.php?id={$r1}'>Editar</a></button><button><a href='actions/exclude-manga.php?id={$r1}'>Excluir</a></button></td>
                         </tr>";

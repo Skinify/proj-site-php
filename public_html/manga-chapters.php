@@ -28,7 +28,6 @@
                 }else{
                     while($stmt->fetch()){
                         array_push($array, $r1);
-                        //var_dump($array);
                     }
                 }
             }
@@ -42,7 +41,7 @@
         <div>
             <label> Capitulo </label>
             <div id="chapter-div">
-                <select onChange="selectChapter(this)">
+                <select class="default-select" onChange="selectChapter(this)">
                     <?php 
                         $i = 1;
                         foreach ($array as $value){
@@ -56,7 +55,7 @@
             </div>
             <input type="hidden" id="manga-id" value="<?php echo $id;?>"/>
             <label for="titulo">Titulo</label>
-            <input id="titulo" name="titulo" type="text" value='<?php echo $r2?>'>
+            <input id="titulo" name="titulo" type="text">
             <label for="desc">Descrição</label>
             <textarea id="desc" name="desc"><?php echo $r4?></textarea>
             <button type="button" onClick="saveChapter(this)">Salvar paginas</button>
@@ -111,6 +110,7 @@
 
         const selectChapter = async function(e){
             toggleLoading(true);
+            paginas = 0;
             document.querySelector("#pages-container").innerHTML = "";
             try{
                 let res = await fetch('actions/chapters-info.php', {
@@ -173,6 +173,7 @@
 
 
         const refreshChapters = async function(){
+            paginas = 0;
             try{
                 let res = await fetch('actions/list-manga-chapters.php', {
                     headers:{
@@ -199,6 +200,7 @@
         }
 
         const addChapter = function(i){
+            paginas = 0;
             if(i == true){
                 let option = document.createElement("option")
                 if(document.querySelector("option:last-of-type") != null){

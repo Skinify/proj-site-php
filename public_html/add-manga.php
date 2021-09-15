@@ -8,20 +8,44 @@
             include(RESOURCES_ROOT . "/templates/header.php");
 
 
-            $editing = false;
+            $array = [];
+            $r6 = "";
+            $r7 = "";
 
-            $r1 = ""; $r2= ""; $r3 = ""; $r4 = "";
+            $conn = openConnection();
+            $stmt = $conn->prepare("select * from genero");
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($r6, $r7);
+            if($stmt->num_rows == 0){
+                $no_categories = true;
+                echo "<script> popAlert('Ainda não existem nenhuma categoria, adicione alguma categoria para proseguir'); </script>";
+            }else{
+                $no_categories = false;
+                while($stmt->fetch()){
+                    array_push($array, [
+                        "id" => $r6,
+                        "genero" => $r7
+                    ]);
+                }
+            }
+
+
+
+            $editing = false;
+            $no_categories = false;
+            $r1 = ""; $r2= ""; $r3 = ""; $r4 = ""; $idGenero = ""; $genero = "";
             $queries = array();
             parse_str($_SERVER['QUERY_STRING'], $queries);
             if(array_key_exists('id', $queries)){
                 $editing = true;
                 $id = clean($queries['id']);
                 $conn = openConnection();
-                $stmt = $conn->prepare("select * from manga where id = (?)");
+                $stmt = $conn->prepare("SELECT A.`id`, `nome`, `desc`, `autor`, `capa`, `genero`, b.Id as `idGenero` FROM `manga` A inner join genero B on A.IdGenero = B.Id where A.id = (?)");
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
                 $stmt->store_result();
-                $stmt->bind_result($r1,$r2,$r3,$r4,$r5);
+                $stmt->bind_result($r1,$r2,$r3,$r4,$r5, $genero, $idGenero);
 
                 if($stmt->num_rows == 0){
                     $editing = false;
@@ -31,6 +55,7 @@
                     while($stmt->fetch()){}
                 }
             }
+
         ?>
 
 
@@ -46,15 +71,30 @@
             ?>
             <label for="titulo">Titulo</label>
             <input id="titulo" name="titulo" type="text" value='<?php echo $r2?>'>
+            <label for="categoria">Categoria</label>    
+            <select style="margin-bottom:12px;" id="genero" name="genero" class="default-select">
+                    <?php 
+                        foreach ($array as $value){
+                            $gen = $value['genero'];
+                            $id = $value['id'];
+                            if($idGenero == $id){
+                                echo "<option selected value='$id'>$gen</option>";
+                            }else{
+                                echo "<option value='$id'>$gen</option>";
+                            }
+                            
+                        }
+                    ?>
+                </select>
             <label for="autor">Autor</label>
             <input id="autor" type="text" name="autor" value='<?php echo $r3?>'></input>
             <label for="desc">Descrição</label>
             <textarea id="desc" name="desc"><?php echo $r4?></textarea>
             <?php
                 if($editing){
-                    echo "<button>Salvar</button>";
+                    echo $no_categories ? "<button disabled>Salvar</button>" : "<button>Salvar</button>";
                 }else{
-                    echo "<button>Adicionar</button>";
+                    echo $no_categories ? "<button disabled>Adicionar</button>" : "<button>Adicionar</button>";
                 }
             ?>
         </div>
@@ -67,9 +107,9 @@
     </form>
     <script>
 
-            const changeImage = function(e){
-                base64Reader(e[0], (base) => document.querySelector("#capa-thumb").src = base)
-                base64Reader(e[0], (base) => document.querySelector("#capa-base").value = base)
+            const changeImage = async function(e){
+                document.querySelector("#capa-thumb").src = await base64Reader(e[0])
+                document.querySelector("#capa-base").value = await base64Reader(e[0])
             }
 
     </script>
