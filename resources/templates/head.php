@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/notchs.css" type="text/css">
     <link rel="stylesheet" href="./css/alert.css" type="text/css">
     <link rel="stylesheet" href="./css/loading.css" type="text/css">
+    <link rel="stylesheet" href="./css/header.css" type="text/css">
     <script src="./js/alert.js"></script>
     <script src="./js/base64Reader.js"></script>
     <script src="./js/loading.js"></script>
