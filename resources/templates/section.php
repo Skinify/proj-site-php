@@ -11,7 +11,7 @@
                     $nome = $value['nome'];
                     $id = $value['id'];
                     echo "
-                    <a class='manga' href='read-manga?id=$id.php'>
+                    <a class='manga' href='read-manga.php?id=$id'>
                         <img src='$capa'>
                         <p>$nome</p>
                     </a>";

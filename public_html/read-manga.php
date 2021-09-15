@@ -20,30 +20,36 @@
             }
 
             $conn = openConnection();
-            $stmt = $conn->prepare("select `Id`, `Nome`, `Capa` from manga where Nome like (?)");
-            $newParameter='%'.$s.'%';
-            $stmt->bind_param("s", $newParameter);
+            $stmt = $conn->prepare("select `Imagem` from manga A inner join capitulo B on A.Id = B.IdManga inner join pagina C on B.Id = C.IdCapitulo where B.Ordem = (?) and C.Ordem = (?) and A.Id = (?)");
+            $stmt->bind_param("iii",$cap, $pag, $queryParams['id']);
             $stmt->execute();
             $stmt->store_result();
-            $stmt->bind_result($r1, $r2, $r3);
+            $stmt->bind_result($r1);
             if($stmt->num_rows == 0){
-                echo "<script> popAlert('O manga não possui capitulos ainda'); </script>";
+                echo "<script> window.location.href='error.php'; </script>";
             }else{
-                while($stmt->fetch()){
-                    array_push($array, [
-                        'id' => $r1,
-                        'nome' => $r2,
-                        'capa' => $r3
-                    ]);
-                }
+                $stmt->fetch();
             }
-        }
+
+            $stmt = $conn->prepare("select count(A.Id) as MaxCapitulos, (select COUNT(P.Id) from pagina P inner join capitulo B on P.IdCapitulo = B.Id where B.IdManga = (?)) as MaxPaginas from capitulo A where A.IdManga = (?)");
+            $stmt->bind_param("ii",$queryParams['id'], $queryParams['id']);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($maxCap, $maxPag);
+            $stmt->fetch();
+            echo "<script>
+                let currentPage = $pag;
+                let currentCap = $cap;
+                let maxCaps = $maxCap;
+                let maxPages = $maxPag; 
+                </script>";
+        } 
 
 
     ?>
     <div id="splash-screen-background" style="filter:blur(0px) brightness(0.1)" class="full-splash"></div>
     <div id="manga-paper"
-        style="background-image: url('./img/mangas-pages/anime-1/cap-1/1.png');"
+        style="background-image: url('<?php echo $r1;?>');"
     ></div>
     <div id="manga-controls">
         <div><button>-</button> <a>Luminosidade</a> <button>+</button> </div>
@@ -61,19 +67,18 @@
 
 <script>
     const mangaPaper = document.querySelector('div#manga-paper');
-
-    let currentPage = 1;
-    let maxPages = 10;
-    let currentCap = 1;
-    let maxCaps = 10;
     let animeName = 'anime-1'
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const mangaId = urlParams.get('id');
 
     const changePage = function(cmd){
         if((currentPage + cmd) > maxPages || (currentPage + cmd) < 1)
             return;
 
         currentPage += cmd;
-        mangaPaper.style.backgroundImage =  `url('./img/mangas-pages/${animeName}/cap-${currentCap}/${currentPage}.png')`
+        window.location.href = `read-manga.php?id=${mangaId}&pag=${currentPage}&cap=${currentCap}`
     }
 
     const changeCap = function(cmd){
@@ -82,7 +87,7 @@
 
         currentPage = 1;
         currentCap += cmd;
-        mangaPaper.style.backgroundImage =  `url('./img/mangas-pages/${animeName}/cap-${currentCap}/${currentPage}.png')`
+        window.location.href = `read-manga.php?id=${mangaId}&pag=${currentPage}&cap=${currentCap}`
     }
 
 </script>
