@@ -532,3 +532,10 @@ input[type="text"]:read-only{
     padding: 0;
     background-color: #e04f4f;
 }
+
+#empty-result{
+    text-align: center;
+    font-size:32px;
+    color:#333;
+    margin:24px auto;
+}

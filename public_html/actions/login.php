@@ -27,6 +27,7 @@ try{
             throw new Exception('Usuario ou senha incorretos');
 
         $_SESSION["loged"] = true;
+        $hash = md5($r1.$r2.$r3.$r4.$r5);
         $_SESSION["token"] = md5($r1 . $r2 . $r3 . $r4 . $r5);
         $_SESSION["user"] = $nickname;
 

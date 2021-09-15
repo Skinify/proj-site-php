@@ -2,10 +2,32 @@
 <?php
 
     $s = "";
-    $queries = array();
-    parse_str($_SERVER['QUERY_STRING'], $queries);
-    if(array_key_exists('v', $queries)){
-        $s = clean($queries['v']);
+    $querySearch = array();
+    $array = [];
+    $r1 = "";$r2 = "";$r3 = "";$r4 = "";
+    parse_str($_SERVER['QUERY_STRING'], $querySearch);
+    if(array_key_exists('v', $querySearch)){
+        $s = clean($querySearch['v']);
+        $conn = openConnection();
+        $stmt = $conn->prepare("select `Id`, `Nome`, `Capa` from manga where Nome like (?)");
+        $newParameter='%'.$s.'%';
+        $stmt->bind_param("s", $newParameter);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($r1, $r2, $r3);
+        if($stmt->num_rows == 0){
+            echo "<script> popAlert('O manga não possui capitulos ainda'); </script>";
+        }else{
+            while($stmt->fetch()){
+                array_push($array, [
+                    'id' => $r1,
+                    'nome' => $r2,
+                    'capa' => $r3
+                ]);
+            }
+        }
+        
+
     }
 
 ?>
@@ -28,7 +50,8 @@
         <?php
                 includeWithVariables("../resources/templates/section.php", array(
                     'sectionTitle' =>  "Resultados da pesquisa '${s}'",
-                    'sectionNotch' => 'naruto-notch'
+                    'sectionNotch' => 'naruto-notch',
+                    'sectionItems' => $array
                 ));
         ?>
     </div>

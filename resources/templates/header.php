@@ -21,9 +21,9 @@
         if($stmt->num_rows == 0){
             echo "<script>popAlert('Sessão invalida por favor entre novamente')</script>";
         }else{
-            $stmt->bind_result($r1,$r2,$r3,$r4,$r5);
+            $stmt->bind_result($r1_1,$r2_1,$r3_1,$r4_1,$r5_1);
 
-            $hash = md5($r1.$r2.$r3.$r4.$r5);
+            $hash = md5($r1_1.$r2_1.$r3_1.$r4_1.$r5_1);
     
             if($hash != $token){
                 $logado = false;
