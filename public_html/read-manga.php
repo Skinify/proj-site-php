@@ -20,22 +20,22 @@
             }
 
             $conn = openConnection();
-            $stmt = $conn->prepare("select `Imagem` from manga A inner join capitulo B on A.Id = B.IdManga inner join pagina C on B.Id = C.IdCapitulo where B.Ordem = (?) and C.Ordem = (?) and A.Id = (?)");
-            $stmt->bind_param("iii",$cap, $pag, $queryParams['id']);
+            $stmt = $conn->prepare("select `Imagem`, (select count(A.id) from capitulo A where A.IdManga = (?)) as MaxCapitulos  from manga A inner join capitulo B on A.Id = B.IdManga inner join pagina C on B.Id = C.IdCapitulo where B.Ordem = (?) and C.Ordem = (?) and A.Id = (?)");
+            $stmt->bind_param("iiii",$queryParams['id'],$cap, $pag, $queryParams['id']);
             $stmt->execute();
             $stmt->store_result();
-            $stmt->bind_result($r1);
+            $stmt->bind_result($r1, $maxCap);
             if($stmt->num_rows == 0){
                 echo "<script> window.location.href='error.php'; </script>";
             }else{
                 $stmt->fetch();
             }
 
-            $stmt = $conn->prepare("select count(A.Id) as MaxCapitulos, (select COUNT(P.Id) from pagina P inner join capitulo B on P.IdCapitulo = B.Id where B.IdManga = (?)) as MaxPaginas from capitulo A where A.IdManga = (?)");
-            $stmt->bind_param("ii",$queryParams['id'], $queryParams['id']);
+            $stmt = $conn->prepare("select COUNT(P.Id) from pagina P inner join capitulo B on P.IdCapitulo = B.Id where B.IdManga = (?) and B.Ordem = (?)");
+            $stmt->bind_param("ii",$queryParams['id'], $cap);
             $stmt->execute();
             $stmt->store_result();
-            $stmt->bind_result($maxCap, $maxPag);
+            $stmt->bind_result($maxPag);
             $stmt->fetch();
             echo "<script>
                 let currentPage = $pag;
