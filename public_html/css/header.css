@@ -71,6 +71,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 }
 
 #header > ul > li:hover{
@@ -196,6 +197,7 @@
     color: inherit;
     position:relative;
     display: flex;
+    transition: all .2s ease-in-out;
 }
 
 #category-dropbox > ul > li:hover{
@@ -230,6 +232,7 @@
     color: inherit;
     position:relative;
     display: flex;
+    transition: all .2s ease-in-out;
 }
 
 #logged-dropbox > ul > li:hover{
@@ -300,16 +303,25 @@
     height: 100%;
 }
 
-#lateral-menu > ul{
+#lateral-menu ul{
     display: flex;
     width: 100%;
     flex-direction: column;
 }
 
-#lateral-menu > ul > li{
+#lateral-menu ul li{
     margin:6px 0;
     padding:16px 12px;
     cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+#lateral-menu ul li:hover{
+    background-color: #e69c4c;
+}
+
+#lateral-menu ul li:active{
+    background-color: #df8320;
 }
 
 .d-flex{

@@ -52,7 +52,6 @@
         style="background-image: url('<?php echo $r1;?>');"
     ></div>
     <div id="manga-controls">
-        <div><button>-</button> <a>Luminosidade</a> <button>+</button> </div>
         <div>
             <button onClick="changePage(-1)"><</button>
             <a>Pagina</a>

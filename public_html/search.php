@@ -32,7 +32,7 @@
 
 ?>
 <html lang="pt-br">
-<?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => 'Mangá Online - Mais lidos'));?>
+<?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => 'Mangá Online - Pesquisa'));?>
 
 <body>
     <?php 
@@ -48,11 +48,13 @@
 
     <div id="content" style="box-shadow:none; margin-top:180px;">
         <?php
-                includeWithVariables("../resources/templates/section.php", array(
-                    'sectionTitle' =>  "Resultados da pesquisa '${s}'",
-                    'sectionNotch' => 'naruto-notch',
-                    'sectionItems' => $array
-                ));
+                if($s !== ""){
+                    includeWithVariables("../resources/templates/section.php", array(
+                        'sectionTitle' =>  "Resultados da pesquisa '${s}'",
+                        'sectionNotch' => 'naruto-notch',
+                        'sectionItems' => $array
+                    ));
+                }
         ?>
     </div>
 

@@ -34,7 +34,7 @@
         <div id="content" style="box-shadow:none; margin-top:180px;">
             <?php
                 includeWithVariables("../resources/templates/section.php", array(
-                    'sectionTitle' =>  array_key_exists('category', $queries) ? clean("Catalogo de {$queries['category']}") : "Catalogo",
+                    'sectionTitle' =>  array_key_exists('category', $queries) ? "Catalogo de {$queries['category']}" : "Catalogo",
                     'sectionNotch' => 'naruto-notch',
                     'sectionItems' => $array
                 ));

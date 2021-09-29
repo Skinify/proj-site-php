@@ -31,7 +31,7 @@
                 <img src="./img/crown.png" id="title-notch" />
             </div>
         </div>
-        <div id="content">
+        <div id="content" style="padding-bottom:50px">
             <?php
                 includeWithVariables("../resources/templates/section.php", array(
                     'sectionTitle' => 'Ultimas novidades',

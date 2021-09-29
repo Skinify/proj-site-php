@@ -43,7 +43,7 @@
 <nav id="header" class="header-on-top">
     <a id="header-title" href="index.php">Mangá Online</a>
     <ul>
-        <li>Leitura aleatoria</li>
+        <li><a href="actions/random-read.php">Leitura aleatoria</a></li>
         <li id="category">Categorias ▼
             <div id="category-dropbox">
                 <ul>
@@ -62,7 +62,6 @@
                     while($stmt->fetch()){
                         echo "<li><a href='categories.php?category=${r2}'>${r2}</a></li>";
                     }
-                
                 ?>
                 </ul>
             </div>
@@ -79,7 +78,6 @@
                     Bem vindo {$user}
                     <div id='logged-dropbox'>
                         <ul>
-                            <li><a>Minha conta</a></li>
                             <li><a>Favoritos</a></li>
                             <li><a href='actions/logout.php'>Sair</a></li>
                         </ul>
@@ -91,7 +89,6 @@
                     Bem vindo {$user}
                     <div id='logged-dropbox'>
                         <ul>
-                            <li><a>Minha conta</a></li>
                             <li><a>Favoritos</a></li>
                             <li><a href='list-mangas.php'>Alterar mangas</a></li>
                             <li><a href='list-categorias.php'>Alterar categorias</a></li>
@@ -115,16 +112,57 @@
     </div>
     <div id="lateral-menu" class="d-flex">
         <ul>
-            <li>Leitura aleatoria</li>
-            <li>Categorias ▼</li>
+            <?php  
+                if($logado){
+                    echo "
+                    <li><a href='actions/logout.php'>Sair</a></li>
+                    <li>Favoritos</li>
+                    ";
+                }else {
+                    print '<li onclick="openLogin()">Login</li>';
+                }
+            ?>
+            <li><a href="actions/random-read.php">Leitura aleatoria</a></li>
+            <li onclick="toggleMobileCategory()">Categorias</li>
+            <div id="mobile-category-li" class="element-hide">
+                <ul>
+                    <?php
+
+                        $conn = openConnection();
+
+                        $stmt = $conn->prepare("select `id`, `genero` from genero");
+                        $stmt->execute();
+                        $stmt->store_result();
+                        $stmt->bind_result($r1,$r2);
+
+                        if($stmt->num_rows == 0)
+                            echo '<li><a>Não existem categorias</a></li>';
+
+                        while($stmt->fetch()){
+                            echo "<li><a href='categories.php?category=${r2}'>${r2}</a></li>";
+                        }
+                    ?>
+                </ul>
+            </div>
         </ul>
     </div>
-    <button id="mobile-search-btn"></button>
+    <button id="mobile-search-btn"><a href="./search.php"></a></button>
 </nav>
 
 <script>
     var windowDimensions = {}
     var lateralMenu = false;
+
+    const toggleMobileCategory = () =>{
+        let e = document.querySelector("#mobile-category-li")
+        if(!!e){
+            if(e.classList.contains("element-hide")){
+                e.classList.remove("element-hide")
+            }else{
+                e.classList.add("element-hide")
+            }
+        }
+    }
 
     window.onresize = function (e) {
         windowDimensionsProxy.height = e.currentTarget.innerHeight

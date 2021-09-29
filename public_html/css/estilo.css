@@ -3,6 +3,20 @@
     --manga-height: 320px
 }
 
+@media only screen and (max-width: 600px) {
+    :root{
+        /*--manga-height: 2400px*/
+        --manga-height: 260px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    :root{
+        /*--manga-height: 2400px*/
+        --manga-height: 200px;
+    }
+}
+
 #splash-screen{
     position: relative;
     height: 600px;
@@ -322,7 +336,6 @@
 }
 
 #manga-controls > div > a{
-    background-color: #F19A3E;
     color:#FFF;
     padding:6px 10px;
     margin:0 12px;
@@ -408,6 +421,28 @@
     background-color: #FFF;    
     box-shadow: 0px 0px 60px 0px #00000024;
     border-radius: 12px;
+}
+
+.table-container > a{
+    margin-bottom: 12px;
+}
+
+th{
+    padding:0 24px;
+}
+
+td{
+    text-align: center;
+}
+
+td > button{
+    box-shadow: none;
+    border:none;
+    margin:0 6px;
+    padding:4px;
+    border-radius: 6px;
+    color:#FFF;
+    background-color: #e28c30;
 }
 
 .default-form{
