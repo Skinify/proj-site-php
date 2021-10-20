@@ -10,24 +10,13 @@
                     $capa = $value['capa'];
                     $nome = $value['nome'];
                     $id = $value['id'];
-                    echo "
-                    <a class='manga' href='read-manga.php?id=$id'>
-                        <img src='$capa'>
-                        <p>$nome</p>
-                    </a>";
+                    includeWithVariables(RESOURCES_ROOT . "/templates/manga.php", array('id' => $id, 'capa' => $capa, 'nome' => $nome));
                 }
             }else{
                 echo "<a id='empty-result'>Desculpe, não encontramos nada ;(</a>";
             }
         }else{
-            for($i = 1; $i <= 12; $i++){
-                echo '
-                    <a class="manga" href="read-manga.php">
-                        <img src="./img/mangas-thumb/naruto-manga-thumb.jpg">
-                        <p>Naruto</p>
-                    </a>
-                ';
-            }
+            echo "<a id='empty-result'>Desculpe, não encontramos nada ;(</a>";
         }
         ?>
     </div>

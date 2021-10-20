@@ -143,6 +143,7 @@
 }
 
 .manga{
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: #F19A3E;    
@@ -573,4 +574,32 @@ input[type="text"]:read-only{
     font-size:32px;
     color:#333;
     margin:24px auto;
+}
+
+#favoritar{
+    position: absolute;
+    right: 0;
+    padding: 8px;
+    text-align: center;
+    color:grey
+}
+
+.favoritado::after{
+    content: "";
+    font-size: 1.6rem;
+    font-family: HoloLens MDL2 Assets;
+    transition: all .2s ease;
+    color: red;
+}
+
+.nao-favoritado::after{
+    content: "";
+    font-size: 1.6rem;
+    font-family: HoloLens MDL2 Assets;
+    transition: all .2s ease;
+}
+
+.nao-favoritado:hover::after{
+    transform: scale(3);
+    color: red;
 }

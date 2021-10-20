@@ -71,7 +71,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: all .2s ease-in-out;
+    transition: all .1s ease;
 }
 
 #header > ul > li:hover{
