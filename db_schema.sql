@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Set-2021 às 00:44
+-- Tempo de geração: 21-Out-2021 às 05:47
 -- Versão do servidor: 10.4.20-MariaDB
 -- versão do PHP: 8.0.9
 
@@ -33,6 +33,17 @@ CREATE TABLE `capitulo` (
   `Titulo` varchar(50) DEFAULT NULL,
   `Desc` varchar(500) DEFAULT NULL,
   `Ordem` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `favoritados`
+--
+
+CREATE TABLE `favoritados` (
+  `UserId` int(11) NOT NULL,
+  `MangaId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

@@ -20,20 +20,6 @@
 
         if($stmt->num_rows == 0){
             echo "<script>popAlert('Sessão invalida por favor entre novamente')</script>";
-        }else{
-            $stmt->bind_result($r1_1,$r2_1,$r3_1,$r4_1,$r5_1);
-
-            $hash = md5($r1_1.$r2_1.$r3_1.$r4_1.$r5_1);
-    
-            if($hash != $token){
-                $logado = false;
-                $user = null;
-                $token = null;
-
-                session_abort();
-
-                echo "<script>popAlert('Sessão invalida por favor entre novamente')</script>";
-            }
         }
     }
 

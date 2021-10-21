@@ -16,7 +16,7 @@ try{
         $nickname = onlyAlphanumeric($nickname);
 
         $conn = openConnection();
-
+        
         $stmt = $conn->prepare("select * from user where nickname = (?) and password = (?)");
         $stmt->bind_param("ss", $nickname, $password);
         $stmt->execute();
@@ -26,14 +26,13 @@ try{
         if($stmt->num_rows == 0)
             throw new Exception('Usuario ou senha incorretos');
 
+        while($stmt->fetch()){ }
+
+        $_SESSION["adm"] = $r5 == 1;
         $_SESSION["loged"] = true;
-        $hash = md5($r1.$r2.$r3.$r4.$r5);
+        $_SESSION["id"] = $r1;
         $_SESSION["token"] = md5($r1 . $r2 . $r3 . $r4 . $r5);
         $_SESSION["user"] = $nickname;
-
-        while($stmt->fetch()){
-            $_SESSION["adm"] = $r5 == 1;
-        }
 
         $stmt->close();
         $conn->close();
