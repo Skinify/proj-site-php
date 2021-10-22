@@ -603,3 +603,71 @@ input[type="text"]:read-only{
     transform: scale(3);
     color: red;
 }
+
+#manga-info-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    padding: 2%;
+    box-shadow: 0px 0px 60px 0px #00000024;
+    border-radius: 12px;
+    max-width: 80%;
+}
+
+
+#manga-info-image{
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 1;
+}
+
+#manga-info-image img{
+    height: calc(var(--manga-height) * 1.4) !important;
+    width: calc(var(--manga-height) * 1.4 * 0.708) !important;
+    object-fit: cover;
+}
+
+#manga-info{
+    display: flex;
+    flex-direction: column;
+    margin:4%;
+    min-width: 300px;
+}
+
+#manga-info-title{
+    font-size: 2rem;
+    color:#e28c30;
+    margin-bottom: -8px;
+}
+
+#manga-info-autor{
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+#manga-info-other{
+    font-size: 1rem;
+}
+
+.capitulo-info{
+    min-width: 80%;
+    margin: 2%;
+    padding:1%;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    color:#FFF;
+    background: linear-gradient(90deg,#f3aa5d, #ef902a);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+#capitulo-info:last-of-type{
+    margin-bottom: 0;
+}
+
+.capitulo-info-pags{
+    font-size: 0.8rem;
+}

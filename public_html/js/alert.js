@@ -3,13 +3,15 @@
 function popAlert(text){
     try{
         var div = document.createElement("div")
+        div.id = "alert"
         div.classList.add("alert")
         var insideDiv = document.createElement("div")
         insideDiv.innerText = text
         div.appendChild(insideDiv)
         setTimeout(() =>{
-            document.body.appendChild(div)
-        }, 500)
+            if(document.querySelectorAll("#alert").length == 0)
+                document.body.appendChild(div)
+        }, 1)
     }catch(ex){
         console.log(ex)
     }

@@ -67,7 +67,7 @@
     }
 
     function read(e){
-        window.location.href = `read-manga.php?id=${e}`
+        window.location.href = `manga-info.php?id=${e}`
     }
 
 </script>
