@@ -31,7 +31,6 @@ try{
         $_SESSION["adm"] = $r5 == 1;
         $_SESSION["loged"] = true;
         $_SESSION["id"] = $r1;
-        $_SESSION["token"] = md5($r1 . $r2 . $r3 . $r4 . $r5);
         $_SESSION["user"] = $nickname;
 
         $stmt->close();

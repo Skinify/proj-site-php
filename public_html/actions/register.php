@@ -36,7 +36,7 @@ try{
         if($stmt->num_rows != 0)
             throw new Exception('Email já em uso');
 
-        $stmt = $conn->prepare("insert into user values(null, (?),(?),(?))");
+        $stmt = $conn->prepare("insert into user values(null, (?),(?),(?), 0)");
         $stmt->bind_param("sss", $nickname, $email, $password);
         $stmt->execute();
         $stmt->store_result();
@@ -45,7 +45,6 @@ try{
         
         session_start();
         $_SESSION["loged"] = true;
-        $_SESSION["tempToken"] = "n";
         $_SESSION["user"] = $nickname;
         $_SESSION["adm"] = false;
 

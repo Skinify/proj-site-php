@@ -13,10 +13,10 @@
                     includeWithVariables(RESOURCES_ROOT . "/templates/manga.php", array('id' => $id, 'capa' => $capa, 'nome' => $nome));
                 }
             }else{
-                echo "<a id='empty-result'>Desculpe, não encontramos nada ;(</a>";
+                echo "<a id='empty-result'>Desculpe, não encontramos nada 😥</a>";
             }
         }else{
-            echo "<a id='empty-result'>Desculpe, não encontramos nada ;(</a>";
+            echo "<a id='empty-result'>Desculpe, não encontramos nada 😥</a>";
         }
         ?>
     </div>

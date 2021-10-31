@@ -6,7 +6,9 @@
     <?php 
             include("../resources/templates/header.php");
     ?>
-    <a>Oops acho q algo deu ruim</a>
+    <div id="error">
+        Oops acho q algo deu ruim
+    </a>
 </body>
 
 </html>

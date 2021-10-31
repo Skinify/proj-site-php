@@ -8,7 +8,6 @@
     if(isset($_SESSION["loged"])){
         $logado = $_SESSION["loged"];
         $user = $_SESSION["user"];
-        $token = $_SESSION["token"];
         $adm = $_SESSION["adm"];
 
         $conn = openConnection();
