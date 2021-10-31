@@ -1,3 +1,7 @@
+.notch{
+    pointer-events: none;
+}
+
 .naruto-notch{
     margin-left: 80px !important;
 }
@@ -12,5 +16,41 @@
     background-repeat: no-repeat;
     top: -40px;
     left: -90px;
+    z-index: 1;
+}
+
+.ryuk-notch{
+    margin-left: 80px !important;
+}
+
+.ryuk-notch::before{
+    content: "";
+    position: absolute;
+    background-image: url("../img/characters/ryuk-1.png");
+    height: 134px;
+    width: 120px;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: -60px;
+    left: -80px;
+    z-index: 1;
+}
+
+.izuku-notch{
+    margin-left: 80px !important;
+}
+
+.izuku-notch::before{
+    content: "";
+    position: absolute;
+    background-image: url("../img/characters/izuku-1.png");
+    height: 140px;
+    width: 150px;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: -60px;
+    left: -100px;
     z-index: 1;
 }

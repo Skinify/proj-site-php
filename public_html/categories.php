@@ -35,7 +35,7 @@
             <?php
                 includeWithVariables("../resources/templates/section.php", array(
                     'sectionTitle' =>  array_key_exists('category', $queries) ? "Catalogo de {$queries['category']}" : "Catalogo",
-                    'sectionNotch' => 'naruto-notch',
+                    'sectionNotch' => 'izuku-notch',
                     'sectionItems' => $array
                 ));
             ?>

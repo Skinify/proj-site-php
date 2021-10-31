@@ -28,7 +28,7 @@
             <div id="title-container">
                 <a id="first-title">Mangá</a>
                 <a id="second-title">Online</a>
-                <img src="./img/crown.png" id="title-notch" />
+                <img src="./img/interface/crown.png" id="title-notch" />
             </div>
         </div>
         <div id="content" style="padding-bottom:50px">

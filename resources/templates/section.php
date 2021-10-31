@@ -1,6 +1,6 @@
 <div class="content-section">
     <div class="section-title">
-        <h2 class="<?php echo $sectionNotch ?>"><?php echo $sectionTitle ?></h2>
+        <h2 class="notch <?php echo $sectionNotch ?>"><?php echo $sectionTitle ?></h2>
     </div>
     <div class="section-body">
         <?php 

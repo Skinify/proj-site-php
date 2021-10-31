@@ -37,7 +37,7 @@
 }
 
 #splash-screen-background{
-    background-image: url("../img/bg.jpg");
+    background-image: url("../img/interface/bg.jpg");
     /*box-shadow: inset 0px -4px 8px 2px #565656;*/
     filter: blur(0.2px) brightness(0.4);
     position: absolute;

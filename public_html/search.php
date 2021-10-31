@@ -51,7 +51,7 @@
                 if($s !== ""){
                     includeWithVariables("../resources/templates/section.php", array(
                         'sectionTitle' =>  "Resultados da pesquisa '${s}'",
-                        'sectionNotch' => 'naruto-notch',
+                        'sectionNotch' => 'ryuk-notch',
                         'sectionItems' => $array
                     ));
                 }
