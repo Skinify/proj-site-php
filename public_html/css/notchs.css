@@ -1,8 +1,5 @@
 .notch{
     pointer-events: none;
-}
-
-.naruto-notch{
     margin-left: 80px !important;
 }
 
@@ -19,10 +16,6 @@
     z-index: 1;
 }
 
-.ryuk-notch{
-    margin-left: 80px !important;
-}
-
 .ryuk-notch::before{
     content: "";
     position: absolute;
@@ -37,10 +30,6 @@
     z-index: 1;
 }
 
-.izuku-notch{
-    margin-left: 80px !important;
-}
-
 .izuku-notch::before{
     content: "";
     position: absolute;
@@ -51,6 +40,20 @@
     background-position: center;
     background-repeat: no-repeat;
     top: -60px;
+    left: -100px;
+    z-index: 1;
+}
+
+.saitama-notch::before{
+    content: "";
+    position: absolute;
+    background-image: url("../img/characters/saitama-1.png");
+    height: 160px;
+    width: 150px;
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: -70px;
     left: -100px;
     z-index: 1;
 }

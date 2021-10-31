@@ -4,6 +4,10 @@
     </div>
     <div class="section-body">
         <?php 
+        $defaultMessage = 'Desculpe, não encontramos nada 😥';
+        if(isset($errorMessage)){
+            $defaultMessage = $errorMessage;
+        }
         if(isset($sectionItems)){
             if(count($sectionItems) > 0){
                 foreach ($sectionItems as $value){
@@ -13,10 +17,10 @@
                     includeWithVariables(RESOURCES_ROOT . "/templates/manga.php", array('id' => $id, 'capa' => $capa, 'nome' => $nome));
                 }
             }else{
-                echo "<a id='empty-result'>Desculpe, não encontramos nada 😥</a>";
+                echo "<a id='empty-result'>$defaultMessage</a>";
             }
         }else{
-            echo "<a id='empty-result'>Desculpe, não encontramos nada 😥</a>";
+            echo "<a id='empty-result'>$defaultMessage</a>";
         }
         ?>
     </div>

@@ -8,6 +8,7 @@
     if(isset($_SESSION["loged"])){
         $logado = $_SESSION["loged"];
         $user = $_SESSION["user"];
+        $userId = $_SESSION["id"];
         $adm = $_SESSION["adm"];
 
         $conn = openConnection();
@@ -63,7 +64,7 @@
                     Bem vindo {$user}
                     <div id='logged-dropbox'>
                         <ul>
-                            <li><a>Favoritos</a></li>
+                            <li><a href='favorites.php'>Favoritos</a></li>
                             <li><a href='actions/logout.php'>Sair</a></li>
                         </ul>
                     </div>
@@ -74,7 +75,7 @@
                     Bem vindo {$user}
                     <div id='logged-dropbox'>
                         <ul>
-                            <li><a>Favoritos</a></li>
+                            <li><a href='favorites.php'>Favoritos</a></li>
                             <li><a href='list-mangas.php'>Alterar mangas</a></li>
                             <li><a href='list-categorias.php'>Alterar categorias</a></li>
                             <li><a href='actions/logout.php'>Sair</a></li>
@@ -101,7 +102,7 @@
                 if($logado){
                     echo "
                     <li><a href='actions/logout.php'>Sair</a></li>
-                    <li>Favoritos</li>
+                    <li><a href='favorites.php'>Favoritos</a></li>
                     ";
                 }else {
                     print '<li onclick="openLogin()">Login</li>';

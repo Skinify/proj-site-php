@@ -256,7 +256,6 @@
                     method: "POST",
                     body: JSON.stringify(payload)
                 });
-                let t = await res.json()
                 popAlert("Sucesso");
             }catch(ex){
                 console.log(ex)
