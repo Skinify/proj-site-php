@@ -27,7 +27,7 @@
             echo "<span id='favoritar' onclick='toggleFavorite(this, $id)' data-favoritado='false' class='nao-favoritado'></span>";
         }
     } ?>
-    <img src='<?php echo $capa ?>'>
+    <img src='<?php echo $capa ?>' alt="manga-thumb">
     <p><?php echo $nome ?></p>
 </a>
 

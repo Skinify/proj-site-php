@@ -6,22 +6,20 @@
             <header>
                 Login
             </header>
-            <input type="text" name="nickname" placeholder="JoooaoXD" />
-            <input type="password" name="password" placeholder="********" />
-            <small href="#" id="small-criar-conta" onclick="toggleCriarContaInputs()">Ainda não possui conta ? Crie
-                uma agora</small>
+            <input type="text" name="nickname" placeholder="JoooaoXD" maxlength="20" size="20" required/>
+            <input type="password" name="password" placeholder="********" minlength="4" maxlength="20" size="20" required/>
+            <small href="#" id="small-criar-conta" onclick="toggleCriarContaInputs()">Ainda não possui conta ? Crie uma agora</small>
             <button type="submit" name="submit">Login</button>
         </form>
         <form action="actions/register.php" method="post" id="registerFrm" class="element-hide">
             <header>
                 Registro
             </header>
-            <input type="text" name="nickname" placeholder="JoooaoXD" />
-            <input type="text" name="email" placeholder="JoooaoXD@hotmail.com" />
-            <input type="password" name="password" placeholder="********" />
-            <input type="password" name="secondPassword" placeholder="********" />
-            <small href="#" id="small-login" onclick="toggleCriarContaInputs()" onclick="">Já
-                possui conta ? Loge agora</small>
+            <input type="text" name="nickname" placeholder="JoooaoXD" maxlength="20" size="20" required/>
+            <input type="text" name="email" placeholder="JoooaoXD@hotmail.com" maxlength="30" size="30" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+            <input type="password" name="password" placeholder="********" minlength="4" maxlength="20" size="20" required/>
+            <input type="password" name="secondPassword" placeholder="********" minlength="4" maxlength="20" size="20" required/>
+            <small href="#" id="small-login" onclick="toggleCriarContaInputs()">Já possui conta ? Loge agora</small>
             <button type="submit" name="submit">Registrar</button>
         </form>
     </div>
