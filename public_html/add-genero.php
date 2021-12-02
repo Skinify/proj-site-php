@@ -45,7 +45,7 @@
                 }
             ?>
             <label for="titulo">Genero</label>
-            <input id="titulo" name="titulo" type="text" value='<?php echo $r2?>'>
+            <input id="titulo" name="titulo" type="text" value='<?php echo $r2?>' required>
             <?php
                 if($editing){
                     echo "<button>Salvar</button>";

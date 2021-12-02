@@ -53,11 +53,11 @@
                 <button onClick="addChapter(true)">+</button>
                 <button onClick="addChapter(false)">-</button>
             </div>
-            <input type="hidden" id="manga-id" value="<?php echo $id;?>"/>
+            <input required type="hidden" id="manga-id" value="<?php echo $id;?>"/>
             <label for="titulo">Titulo</label>
-            <input id="titulo" name="titulo" type="text">
+            <input required id="titulo" name="titulo" type="text">
             <label for="desc">Descrição</label>
-            <textarea id="desc" name="desc"></textarea>
+            <textarea required id="desc" name="desc"></textarea>
             <button type="button" onClick="saveChapter(this)">Salvar paginas</button>
         </div>
         <div>
@@ -67,7 +67,7 @@
             <div id="pages-container">
             </div>
 
-            <input type="file" name="capa" id="file-input" accept="image/png, image/jpeg"
+            <input required type="file" name="capa" id="file-input" accept="image/png, image/jpeg"
                 onChange="changeImage(this.files)" multiple />
         </div>
     </form>

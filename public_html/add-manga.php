@@ -70,9 +70,9 @@
                 }
             ?>
             <label for="titulo">Titulo</label>
-            <input id="titulo" name="titulo" type="text" value='<?php echo $r2?>'>
-            <label for="categoria">Categoria</label>    
-            <select style="margin-bottom:12px;" id="genero" name="genero" class="default-select">
+            <input id="titulo" name="titulo" type="text" value='<?php echo $r2?>' required>
+            <label for="categoria" required>Categoria</label>    
+            <select style="margin-bottom:12px;" id="genero" name="genero" class="default-select" required>
                     <?php 
                         foreach ($array as $value){
                             $gen = $value['genero'];
@@ -87,9 +87,9 @@
                     ?>
                 </select>
             <label for="autor">Autor</label>
-            <input id="autor" type="text" name="autor" value='<?php echo $r3?>'></input>
+            <input id="autor" type="text" name="autor" value='<?php echo $r3?>' required></input>
             <label for="desc">Descrição</label>
-            <textarea id="desc" name="desc"><?php echo $r4?></textarea>
+            <textarea id="desc" name="desc" required><?php echo $r4?></textarea>
             <?php
                 if($editing){
                     echo $no_categories ? "<button disabled>Salvar</button>" : "<button>Salvar</button>";
