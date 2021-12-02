@@ -26,7 +26,7 @@
     
         }
     ?>
-    <?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => array_key_exists('category', $queries) ? clean("Mangá Online - {$queries['category']}") : 'Categoria' ));?>
+    <?php includeWithVariables("../resources/templates/head.php", array('pageTitle' => array_key_exists('category', $queries) ? "Mangá Online - {$queries['category']}" : 'Categoria' ));?>
     <body>
         <?php 
             include("../resources/templates/header.php");
@@ -34,7 +34,7 @@
         <div id="content" style="box-shadow:none; margin-top:180px;">
             <?php
                 includeWithVariables("../resources/templates/section.php", array(
-                    'sectionTitle' =>  array_key_exists('category', $queries) ? "Catalogo de {$queries['category']}" : "Catalogo",
+                    'sectionTitle' =>  array_key_exists('category', $queries) ? "Catálogo de {$queries['category']}" : "Catálogo",
                     'sectionNotch' => 'izuku-notch',
                     'sectionItems' => $array
                 ));

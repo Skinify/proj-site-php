@@ -2,6 +2,7 @@
 
 function popAlert(text){
     try{
+        console.log(text)
         var div = document.createElement("div")
         div.id = "alert"
         div.classList.add("alert")

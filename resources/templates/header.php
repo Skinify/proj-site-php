@@ -8,15 +8,19 @@
     if(isset($_SESSION["loged"])){
         $logado = $_SESSION["loged"];
         $user = $_SESSION["user"];
-        $userId = $_SESSION["id"];
+        $userId = isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
         $adm = $_SESSION["adm"];
 
         $conn = openConnection();
 
-        $stmt = $conn->prepare("select * from user where nickname = (?)");
+        $stmt = $conn->prepare("select Id from user where nickname = (?)");
         $stmt->bind_param("s", $user);
         $stmt->execute();
         $stmt->store_result();
+        $stmt->bind_result($commingId);
+        while($stmt->fetch()){}
+        $userId = $commingId;
+        $_SESSION["id"] = $commingId;
 
         if($stmt->num_rows == 0){
             echo "<script>popAlert('Sessão invalida por favor entre novamente')</script>";

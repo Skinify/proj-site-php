@@ -33,7 +33,7 @@
 
             if($stmt->num_rows == 0)
                 echo '
-                    <tr> <td colspan="4">Não existem registros</td> </tr>
+                    <tr> <td colspan="7">Não existem registros</td> </tr>
                 ';
 
             while($stmt->fetch()){

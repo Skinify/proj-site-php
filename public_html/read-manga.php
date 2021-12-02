@@ -26,8 +26,7 @@
             $stmt->store_result();
             $stmt->bind_result($r1, $maxCap);
             if($stmt->num_rows == 0){
-                //echo "<script> window.location.href='error.php'; </script>";
-                $err = base64_encode("Não existem mangas disponiveis");
+                $err = base64_encode("Não existem mangas disponíveis");
                 echo "<script> window.location.href='index.php?alertMessage=$err'; </script>";
             }else{
                 $stmt->fetch();

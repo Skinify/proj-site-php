@@ -11,7 +11,7 @@
 
     if(array_key_exists('alertMessage', $queries)){
         if(isBase64($queries['alertMessage'])){
-            $param = clean(base64_decode($queries['alertMessage']));
+            $param = base64_decode($queries['alertMessage']);
             echo "
                 <script>
                     var alertMessage = '$param';
