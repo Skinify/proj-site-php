@@ -15,8 +15,8 @@ try{
         if($password !== $secondPassword)
             throw new Exception('Senhas divergentes');
 
-        $nickname = onlyAlphanumeric($nickname);
-        $email = cleanEmail($email);
+        $nickname = $nickname;
+        $email = $email;
 
         $conn = openConnection();
 

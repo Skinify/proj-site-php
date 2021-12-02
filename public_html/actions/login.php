@@ -13,7 +13,7 @@ try{
         $nickname = $_REQUEST['nickname'];
         $password = md5($_REQUEST['password']);
 
-        $nickname = onlyAlphanumeric($nickname);
+        $nickname = $nickname;
 
         $conn = openConnection();
         
